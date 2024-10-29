@@ -23,6 +23,8 @@ namespace StrategySync
         public MainWindow()
         {
             InitializeComponent();
+            MainWindowVM ViewModel = new MainWindowVM();
+            MainFrame.Navigate(new Pages.Account.LoginScreen());
         }
     }
 }
