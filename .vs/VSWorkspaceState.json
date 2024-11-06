@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Pages",
+    "\\Pages\\Account",
+    "\\Pages\\Account\\LoginScreen"
   ],
+  "SelectedNode": "\\StrategySync.sln",
   "PreviewInSolutionExplorer": false
 }

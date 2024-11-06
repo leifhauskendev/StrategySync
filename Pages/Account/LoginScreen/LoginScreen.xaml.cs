@@ -20,9 +20,17 @@ namespace StrategySync.Pages.Account
     /// </summary>
     public partial class LoginScreen : Page
     {
+        public LoginScreenVM ViewModel;
         public LoginScreen()
         {
             InitializeComponent();
+            ViewModel = new LoginScreenVM();
+            this.DataContext = ViewModel;
+        }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.ValidateLoginInfo();
         }
     }
 }
