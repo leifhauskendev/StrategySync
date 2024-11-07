@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using StrategySync.Classes.DA;
+using System;
+using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace StrategySync.Pages.Account
 {
@@ -30,7 +21,35 @@ namespace StrategySync.Pages.Account
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.ValidateLoginInfo();
+            // Retrieve the username and password from the TextBoxes
+            string username = UsernameTextBox.Text;
+            string password = PasswordTextBox.Text;
+
+            // Create a new User instance
+            User newUser = new User
+            {
+                Username = username,
+                Salt = GenerateSalt() // Generate a random salt for this user
+            };
+
+            // Hash the password using Argon2
+            string hashedPassword = newUser.HashPasswordWithArgon2(password);
+
+            // Insert the user into the database
+            UserDA.CreateRecord(newUser, hashedPassword);
+
+            MessageBox.Show("User created successfully.");
+        }
+
+        private byte[] GenerateSalt()
+        {
+            // Generates a secure random salt
+            byte[] salt = new byte[16];
+            using (var rng = new RNGCryptoServiceProvider())
+            {
+                rng.GetBytes(salt);
+            }
+            return salt;
         }
     }
 }

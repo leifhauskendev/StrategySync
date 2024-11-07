@@ -8,7 +8,6 @@ public class User : AES, INotifyPropertyChanged
 {
     #region Private Fields
     private string _username;
-    private string _password;
     private byte[] _salt;
     #endregion
 
@@ -22,19 +21,6 @@ public class User : AES, INotifyPropertyChanged
             {
                 _username = value;
                 OnPropertyChanged(nameof(Username));
-            }
-        }
-    }
-
-    public string Password
-    {
-        get { return _password; }
-        set
-        {
-            if (_password != value)
-            {
-                _password = value;
-                OnPropertyChanged(nameof(Password));
             }
         }
     }
@@ -54,9 +40,9 @@ public class User : AES, INotifyPropertyChanged
     #endregion
 
     #region Methods
-    public string HashPasswordWithArgon2()
+    public string HashPasswordWithArgon2(string passwordPlainText)
     {
-        var argon2 = new Argon2i(Encoding.UTF8.GetBytes(Password))
+        var argon2 = new Argon2i(Encoding.UTF8.GetBytes(passwordPlainText))
         {
             Salt = Salt,
             DegreeOfParallelism = 8,
