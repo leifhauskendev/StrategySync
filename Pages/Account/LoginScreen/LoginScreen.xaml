@@ -26,8 +26,8 @@
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="50">StrategySync</TextBlock>
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Source.Username, Mode=TwoWay}"></TextBox>
-        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Source.PasswordString, Mode=TwoWay}"></TextBox>
+        <TextBox Grid.Row="2" Grid.Column="1"  x:Name="UsernameTextBox" Text="{Binding Source.Username, Mode=TwoWay}"></TextBox>
+        <TextBox Grid.Row="3" Grid.Column="1" x:Name="PasswordTextBox" Text="{Binding Source.PasswordString, Mode=TwoWay}"></TextBox>
         <Button Grid.Row="4" Grid.Column="1" Content="Login" Name="LoginButton" Click="LoginButton_Click"></Button>
     </Grid>
 </Page>

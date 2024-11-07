@@ -8,8 +8,9 @@ public class User : AES, INotifyPropertyChanged
 {
     #region Private Fields
     private string _username;
-    private string _password;
     private byte[] _salt;
+    private string _email;
+    private string _usersFriends;
     #endregion
 
     #region Public Properties
@@ -26,19 +27,6 @@ public class User : AES, INotifyPropertyChanged
         }
     }
 
-    public string Password
-    {
-        get { return _password; }
-        set
-        {
-            if (_password != value)
-            {
-                _password = value;
-                OnPropertyChanged(nameof(Password));
-            }
-        }
-    }
-
     public byte[] Salt
     {
         get { return _salt; }
@@ -51,12 +39,38 @@ public class User : AES, INotifyPropertyChanged
             }
         }
     }
+
+    public string Email
+    {
+        get { return _email; }
+        set
+        {
+            if (_email != value)
+            {
+                _email = value;
+                OnPropertyChanged(nameof(Email));
+            }
+        }
+    }
+
+    public string UsersFriends
+    {
+        get { return _usersFriends; }
+        set
+        {
+            if (_usersFriends != value)
+            {
+                _usersFriends = value;
+                OnPropertyChanged(nameof(UsersFriends));
+            }
+        }
+    }
     #endregion
 
     #region Methods
-    public string HashPasswordWithArgon2()
+    public string HashPasswordWithArgon2(string passwordPlainText)
     {
-        var argon2 = new Argon2i(Encoding.UTF8.GetBytes(Password))
+        var argon2 = new Argon2i(Encoding.UTF8.GetBytes(passwordPlainText))
         {
             Salt = Salt,
             DegreeOfParallelism = 8,

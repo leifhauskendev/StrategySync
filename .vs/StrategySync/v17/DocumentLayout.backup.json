@@ -1,26 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\leifh\\source\\repos\\leifhauskendev\\StrategySync\\",
+  "WorkspaceRootPath": "C:\\Users\\andyb\\source\\repos\\StrategySync\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|c:\\users\\leifh\\source\\repos\\leifhauskendev\\strategysync\\pages\\account\\loginscreen\\loginscreenvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|C:\\Users\\andyb\\source\\repos\\StrategySync\\Pages\\Account\\LoginScreen\\LoginScreen.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|solutionrelative:Pages\\Account\\LoginScreen\\LoginScreen.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|C:\\Users\\andyb\\source\\repos\\StrategySync\\pages\\account\\loginscreen\\loginscreenvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|solutionrelative:pages\\account\\loginscreen\\loginscreenvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|c:\\users\\leifh\\source\\repos\\leifhauskendev\\strategysync\\classes\\user\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|solutionrelative:classes\\user\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|C:\\Users\\andyb\\source\\repos\\StrategySync\\pages\\account\\loginscreen\\loginscreen.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|solutionrelative:pages\\account\\loginscreen\\loginscreen.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|c:\\users\\leifh\\source\\repos\\leifhauskendev\\strategysync\\classes\\security\\aes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|solutionrelative:classes\\security\\aes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|c:\\users\\andyb\\source\\repos\\strategysync\\classes\\da\\usersda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|solutionrelative:classes\\da\\usersda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|c:\\users\\leifh\\source\\repos\\leifhauskendev\\strategysync\\pages\\account\\loginscreen\\loginscreen.xaml||{CD07C22A-D51F-4064-AFDB-10CD01D91020}",
-      "RelativeMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|solutionrelative:pages\\account\\loginscreen\\loginscreen.xaml||{CD07C22A-D51F-4064-AFDB-10CD01D91020}"
+      "AbsoluteMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|C:\\Users\\andyb\\source\\repos\\StrategySync\\Classes\\User\\User.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|solutionrelative:Classes\\User\\User.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|C:\\Users\\leifh\\source\\repos\\leifhauskendev\\StrategySync\\Pages\\Account\\LoginScreen\\LoginScreen.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|solutionrelative:Pages\\Account\\LoginScreen\\LoginScreen.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|C:\\Users\\andyb\\source\\repos\\StrategySync\\Classes\\Security\\AES.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|solutionrelative:Classes\\Security\\AES.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,76 +34,96 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AES.cs",
-              "DocumentMoniker": "C:\\Users\\leifh\\source\\repos\\leifhauskendev\\StrategySync\\Classes\\Security\\AES.cs",
-              "RelativeDocumentMoniker": "Classes\\Security\\AES.cs",
-              "ToolTip": "C:\\Users\\leifh\\source\\repos\\leifhauskendev\\StrategySync\\Classes\\Security\\AES.cs",
-              "RelativeToolTip": "Classes\\Security\\AES.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-04T21:07:45.287Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\leifh\\source\\repos\\leifhauskendev\\StrategySync\\Classes\\User\\User.cs",
-              "RelativeDocumentMoniker": "Classes\\User\\User.cs",
-              "ToolTip": "C:\\Users\\leifh\\source\\repos\\leifhauskendev\\StrategySync\\Classes\\User\\User.cs",
-              "RelativeToolTip": "Classes\\User\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-04T21:07:15.316Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "LoginScreenVM.cs",
-              "DocumentMoniker": "C:\\Users\\leifh\\source\\repos\\leifhauskendev\\StrategySync\\Pages\\Account\\LoginScreen\\LoginScreenVM.cs",
-              "RelativeDocumentMoniker": "Pages\\Account\\LoginScreen\\LoginScreenVM.cs",
-              "ToolTip": "C:\\Users\\leifh\\source\\repos\\leifhauskendev\\StrategySync\\Pages\\Account\\LoginScreen\\LoginScreenVM.cs",
-              "RelativeToolTip": "Pages\\Account\\LoginScreen\\LoginScreenVM.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-04T21:03:41.516Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "LoginScreen.xaml",
-              "DocumentMoniker": "C:\\Users\\leifh\\source\\repos\\leifhauskendev\\StrategySync\\Pages\\Account\\LoginScreen\\LoginScreen.xaml",
-              "RelativeDocumentMoniker": "Pages\\Account\\LoginScreen\\LoginScreen.xaml",
-              "ToolTip": "C:\\Users\\leifh\\source\\repos\\leifhauskendev\\StrategySync\\Pages\\Account\\LoginScreen\\LoginScreen.xaml",
-              "RelativeToolTip": "Pages\\Account\\LoginScreen\\LoginScreen.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-11-04T20:43:50.557Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UsersDA.cs",
+              "DocumentMoniker": "C:\\Users\\andyb\\source\\repos\\StrategySync\\Classes\\DA\\UsersDA.cs",
+              "RelativeDocumentMoniker": "Classes\\DA\\UsersDA.cs",
+              "ToolTip": "C:\\Users\\andyb\\source\\repos\\StrategySync\\Classes\\DA\\UsersDA.cs",
+              "RelativeToolTip": "Classes\\DA\\UsersDA.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-07T17:36:26.129Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LoginScreen.xaml",
+              "DocumentMoniker": "C:\\Users\\andyb\\source\\repos\\StrategySync\\Pages\\Account\\LoginScreen\\LoginScreen.xaml",
+              "RelativeDocumentMoniker": "Pages\\Account\\LoginScreen\\LoginScreen.xaml",
+              "ToolTip": "C:\\Users\\andyb\\source\\repos\\StrategySync\\Pages\\Account\\LoginScreen\\LoginScreen.xaml",
+              "RelativeToolTip": "Pages\\Account\\LoginScreen\\LoginScreen.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-11-07T17:38:37.376Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AES.cs",
+              "DocumentMoniker": "C:\\Users\\andyb\\source\\repos\\StrategySync\\Classes\\Security\\AES.cs",
+              "RelativeDocumentMoniker": "Classes\\Security\\AES.cs",
+              "ToolTip": "C:\\Users\\andyb\\source\\repos\\StrategySync\\Classes\\Security\\AES.cs",
+              "RelativeToolTip": "Classes\\Security\\AES.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T21:07:45.287Z"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\andyb\\source\\repos\\StrategySync\\Classes\\User\\User.cs",
+              "RelativeDocumentMoniker": "Classes\\User\\User.cs",
+              "ToolTip": "C:\\Users\\andyb\\source\\repos\\StrategySync\\Classes\\User\\User.cs",
+              "RelativeToolTip": "Classes\\User\\User.cs",
+              "ViewState": "AgIAAEQAAAAAAAAAAAAUwF4AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T21:07:15.316Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LoginScreenVM.cs",
+              "DocumentMoniker": "C:\\Users\\andyb\\source\\repos\\StrategySync\\Pages\\Account\\LoginScreen\\LoginScreenVM.cs",
+              "RelativeDocumentMoniker": "Pages\\Account\\LoginScreen\\LoginScreenVM.cs",
+              "ToolTip": "C:\\Users\\andyb\\source\\repos\\StrategySync\\Pages\\Account\\LoginScreen\\LoginScreenVM.cs",
+              "RelativeToolTip": "Pages\\Account\\LoginScreen\\LoginScreenVM.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAA6wB8AAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T21:03:41.516Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "LoginScreen.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\leifh\\source\\repos\\leifhauskendev\\StrategySync\\Pages\\Account\\LoginScreen\\LoginScreen.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\andyb\\source\\repos\\StrategySync\\Pages\\Account\\LoginScreen\\LoginScreen.xaml.cs",
               "RelativeDocumentMoniker": "Pages\\Account\\LoginScreen\\LoginScreen.xaml.cs",
-              "ToolTip": "C:\\Users\\leifh\\source\\repos\\leifhauskendev\\StrategySync\\Pages\\Account\\LoginScreen\\LoginScreen.xaml.cs",
-              "RelativeToolTip": "Pages\\Account\\LoginScreen\\LoginScreen.xaml.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAUwBoAAAAsAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\andyb\\source\\repos\\StrategySync\\Pages\\Account\\LoginScreen\\LoginScreen.xaml.cs*",
+              "RelativeToolTip": "Pages\\Account\\LoginScreen\\LoginScreen.xaml.cs*",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAkwBYAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-04T20:28:40.608Z",
               "EditorCaption": ""
