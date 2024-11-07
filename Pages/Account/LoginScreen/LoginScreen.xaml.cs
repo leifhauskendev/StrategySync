@@ -24,32 +24,34 @@ namespace StrategySync.Pages.Account
             // Retrieve the username and password from the TextBoxes
             string username = UsernameTextBox.Text;
             string password = PasswordTextBox.Text;
+            string email = "test"; // Assume there's a TextBox for email
+            string usersFriends = "test"; // Assume there's a TextBox for users' friends
 
-            // Create a new User instance
+            // Generate a random salt for this user
+            byte[] salt = User.GenerateSalt();
+
+            // Generate AES encryption key and IV (you can customize these methods)
+            byte[] aesKey = User.GenerateKey(password);
+            byte[] aesIV = User.GenerateIV();
+
+            // Create a new User instance with all properties
             User newUser = new User
             {
                 Username = username,
-                Salt = GenerateSalt() // Generate a random salt for this user
+                Email = email,
+                Salt = salt,
+                AESKey = aesKey,
+                AESIV = aesIV,
+                UsersFriends = usersFriends
             };
 
             // Hash the password using Argon2
-            string hashedPassword = newUser.HashPasswordWithArgon2(password);
-
+            newUser.PasswordString = newUser.HashPasswordWithArgon2(password);
+            newUser.EncryptedPassword = User.EncryptStringToBytes(newUser.PasswordString, newUser.AESKey, newUser.AESIV);
             // Insert the user into the database
-            UserDA.CreateRecord(newUser, hashedPassword);
+            UserDA.CreateRecord(newUser);
 
             MessageBox.Show("User created successfully.");
-        }
-
-        private byte[] GenerateSalt()
-        {
-            // Generates a secure random salt
-            byte[] salt = new byte[16];
-            using (var rng = new RNGCryptoServiceProvider())
-            {
-                rng.GetBytes(salt);
-            }
-            return salt;
         }
     }
 }

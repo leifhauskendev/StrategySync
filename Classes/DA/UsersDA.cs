@@ -6,22 +6,30 @@ namespace StrategySync.Classes.DA
 {
     public class UserDA
     {
-        private static string connectionString = "Server=strategysync.mysql.database.azure.com; Port=3306; Database=strategysync; Uid=sysadmin@strategysync; Pwd=Password1!; SslMode=Required;";
+        private static string connectionString = "Server=strategysync.mysql.database.azure.com; Port=3306; Database=strategysync; Uid=sysadmin; Pwd=Password1!; SslMode=Required;";
 
-        public static void CreateRecord(User user, string hashedPassword)
+        public static void CreateRecord(User user)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
-                using (MySqlCommand command = new MySqlCommand("INSERT INTO Users (User, Password, Salt) VALUES (@user, @password, @salt)", connection))
+                using (MySqlCommand command = new MySqlCommand(
+                    "INSERT INTO users (username, password, salt, email, aes_key, aes_iv, users_friends) VALUES (@username, @password, @salt, @Email, @AesKey, @AesIV, @UsersFriends)",
+                    connection))
                 {
-                    command.Parameters.AddWithValue("@user", user.Username);
-                    command.Parameters.AddWithValue("@password", hashedPassword);
+                    command.Parameters.AddWithValue("@username", user.Username);
+                    command.Parameters.AddWithValue("@password", user.EncryptedPassword);
                     command.Parameters.AddWithValue("@salt", user.Salt);
+                    command.Parameters.AddWithValue("@Email", user.Email);
+                    command.Parameters.AddWithValue("@AesKey", user.AESKey);
+                    command.Parameters.AddWithValue("@AesIV", user.AESIV);
+                    command.Parameters.AddWithValue("@UsersFriends", user.UsersFriends);
+
                     command.ExecuteNonQuery();
                 }
             }
         }
+
 
         public static User ReadRecord(string username)
         {
