@@ -3,19 +3,19 @@
   "WorkspaceRootPath": "C:\\Users\\andyb\\source\\repos\\StrategySync\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|C:\\Users\\andyb\\source\\repos\\StrategySync\\Pages\\Account\\LoginScreen\\LoginScreen.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|solutionrelative:Pages\\Account\\LoginScreen\\LoginScreen.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|c:\\users\\andyb\\source\\repos\\strategysync\\pages\\account\\loginscreen\\loginscreen.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|solutionrelative:pages\\account\\loginscreen\\loginscreen.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|C:\\Users\\andyb\\source\\repos\\StrategySync\\Pages\\Account\\LoginScreen\\LoginScreen.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|solutionrelative:Pages\\Account\\LoginScreen\\LoginScreen.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|c:\\users\\andyb\\source\\repos\\strategysync\\pages\\account\\createaccount\\createaccount.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|C:\\Users\\andyb\\source\\repos\\StrategySync\\pages\\account\\createaccount\\createaccount.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|solutionrelative:pages\\account\\createaccount\\createaccount.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|c:\\users\\andyb\\source\\repos\\strategysync\\pages\\account\\createaccount\\createaccount.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|C:\\Users\\andyb\\source\\repos\\StrategySync\\pages\\account\\createaccount\\createaccount.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|solutionrelative:pages\\account\\createaccount\\createaccount.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -23,11 +23,11 @@
       "RelativeMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|solutionrelative:Classes\\Security\\AES.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|c:\\users\\andyb\\source\\repos\\strategysync\\pages\\account\\createaccount\\createaccountvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|C:\\Users\\andyb\\source\\repos\\StrategySync\\pages\\account\\createaccount\\createaccountvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|solutionrelative:pages\\account\\createaccount\\createaccountvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|c:\\users\\andyb\\source\\repos\\strategysync\\classes\\da\\usersda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|C:\\Users\\andyb\\source\\repos\\StrategySync\\classes\\da\\usersda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C7C5AAAC-9C71-465F-B7D4-45A3CF3F4C4C}|StrategySync.csproj|solutionrelative:classes\\da\\usersda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -46,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Document",
@@ -59,8 +59,7 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEgAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-04T21:07:45.287Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -75,6 +74,10 @@
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "CreateAccount.xaml.cs",
@@ -84,8 +87,7 @@
               "RelativeToolTip": "Pages\\Account\\CreateAccount\\CreateAccount.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-12T16:27:56.963Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-12T16:27:56.963Z"
             },
             {
               "$type": "Document",
@@ -97,8 +99,7 @@
               "RelativeToolTip": "Pages\\Account\\CreateAccount\\CreateAccountVM.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-12T16:26:57.127Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-12T16:26:57.127Z"
             },
             {
               "$type": "Document",
@@ -109,8 +110,7 @@
               "ToolTip": "C:\\Users\\andyb\\source\\repos\\StrategySync\\Pages\\Account\\CreateAccount\\CreateAccount.xaml",
               "RelativeToolTip": "Pages\\Account\\CreateAccount\\CreateAccount.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-11-12T16:26:26.759Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-12T16:26:26.759Z"
             },
             {
               "$type": "Document",
@@ -121,8 +121,7 @@
               "ToolTip": "C:\\Users\\andyb\\source\\repos\\StrategySync\\Pages\\Account\\LoginScreen\\LoginScreen.xaml",
               "RelativeToolTip": "Pages\\Account\\LoginScreen\\LoginScreen.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-11-07T17:38:37.376Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-07T17:38:37.376Z"
             },
             {
               "$type": "Document",
@@ -159,8 +158,7 @@
               "RelativeToolTip": "Classes\\DA\\UsersDA.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-07T17:36:26.129Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-07T17:36:26.129Z"
             },
             {
               "$type": "Document",
