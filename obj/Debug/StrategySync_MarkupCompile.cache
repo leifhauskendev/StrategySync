@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\andyb\Source\Repos\StrategySync\App.xaml
-2878732816
+31445294771
 
-11-968876747
+13707432650
 35611944271
-MainWindow.xaml;Pages\Account\LoginScreen\LoginScreen.xaml;
+MainWindow.xaml;Pages\Account\CreateAccount\CreateAccount.xaml;Pages\Account\LoginScreen\LoginScreen.xaml;
 
 False
 

@@ -1,0 +1,42 @@
+﻿<Window x:Class="StrategySync.Pages.Account.CreateAccount.CreateAccount"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StrategySync.Pages.Account.CreateAccount"
+        mc:Ignorable="d"
+        Title="CreateAccount" Height="300" Width="300">
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Create Account" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" 
+                   Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,20"/>
+
+        <TextBlock Text="Username:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="0,5,0,5"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="0,5,0,5" Name="UsernameTextBox"/>
+
+        <TextBlock Text="Email:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="0,5,0,5"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Margin="0,5,0,5" Name="EmailTextBox"/>
+
+        <TextBlock Text="Password:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="0,5,0,5"/>
+        <PasswordBox Grid.Row="3" Grid.Column="1" Margin="0,5,0,5" Name="PasswordBox"/>
+
+        <TextBlock Text="Confirm Password:" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Margin="0,5,5,5"/>
+        <PasswordBox Grid.Row="4" Grid.Column="1" Margin="0,5,0,5" Name="ConfirmPasswordBox"/>
+
+        <Button Content="Create Account" Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Center" Width="150" Height="30" 
+                Margin="0,20,0,0" Click="CreateAccountButton_Click"/>
+    </Grid>
+</Window>
