@@ -9,47 +9,26 @@ namespace StrategySync.Pages.Account.CreateAccount
     /// </summary>
     public partial class CreateAccount : Window
     {
+        private CreateAccountVM createAccountVm;
+
         public CreateAccount()
         {
             InitializeComponent();
+            createAccountVm = new CreateAccountVM();
+            DataContext = createAccountVm;
         }
 
         private void CreateAccountButton_Click(object sender, RoutedEventArgs e)
         {
-            string username = UsernameTextBox.Text;
-            string password = PasswordBox.Password;
-            string confirmPassword = ConfirmPasswordBox.Password; 
-            string email = EmailTextBox.Text;
-            string usersFriends = string.Empty;
+            createAccountVm.Password = PasswordBox.Password;
+            createAccountVm.ConfirmPassword = ConfirmPasswordBox.Password;
 
-            if (password != confirmPassword)
+            bool userCreated = createAccountVm.CreateUser();
+            if (userCreated)
             {
-                MessageBox.Show("Passwords do not match. Please try again.");
-                return;
+                MessageBox.Show("User created successfully.");
+                this.Close();
             }
-
-            byte[] salt = User.GenerateSalt();
-
-            byte[] aesKey = User.GenerateKey(password);
-            byte[] aesIV = User.GenerateIV();
-
-            User newUser = new User
-            {
-                Username = username,
-                Email = email,
-                Salt = salt,
-                AESKey = aesKey,
-                AESIV = aesIV,
-                UsersFriends = usersFriends
-            };
-
-            newUser.PasswordString = newUser.HashPasswordWithArgon2(password);
-            newUser.EncryptedPassword = User.EncryptStringToBytes(newUser.PasswordString, newUser.AESKey, newUser.AESIV);
-
-            UserDA.CreateRecord(newUser);
-
-            MessageBox.Show("User created successfully.");
-            this.Close();
         }
     }
 }

@@ -25,10 +25,10 @@
                    Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,20"/>
 
         <TextBlock Text="Username:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="0,5,0,5"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="0,5,0,5" Name="UsernameTextBox"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="0,5,0,5" Name="UsernameTextBox" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"/>
 
         <TextBlock Text="Email:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="0,5,0,5"/>
-        <TextBox Grid.Row="2" Grid.Column="1" Margin="0,5,0,5" Name="EmailTextBox"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Margin="0,5,0,5" Name="EmailTextBox" Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
 
         <TextBlock Text="Password:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="0,5,0,5"/>
         <PasswordBox Grid.Row="3" Grid.Column="1" Margin="0,5,0,5" Name="PasswordBox"/>
