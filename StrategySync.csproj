@@ -128,6 +128,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\Account\CreateAccount\CreateAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Account\LoginScreen\LoginScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -135,6 +139,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainWindowVM.cs" />
+    <Compile Include="Pages\Account\CreateAccount\CreateAccount.xaml.cs">
+      <DependentUpon>CreateAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Account\CreateAccount\CreateAccountVM.cs" />
     <Compile Include="Pages\Account\LoginScreen\LoginScreen.xaml.cs">
       <DependentUpon>LoginScreen.xaml</DependentUpon>
     </Compile>

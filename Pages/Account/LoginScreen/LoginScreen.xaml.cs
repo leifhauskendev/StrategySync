@@ -53,5 +53,10 @@ namespace StrategySync.Pages.Account
 
             MessageBox.Show("User created successfully.");
         }
+        private void CreateAccountButton_Click(object sender, RoutedEventArgs e)
+        {
+            var createAccountWindow = new CreateAccount.CreateAccount();
+            createAccountWindow.ShowDialog();
+        }
     }
 }
