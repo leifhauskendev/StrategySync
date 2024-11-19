@@ -73,13 +73,14 @@ namespace StrategySync
         #region Methods
         public static byte[] EncryptStringToBytes(string plainText, byte[] key, byte[] iv)
         {
-            if (string.IsNullOrEmpty(plainText))
-                throw new ArgumentNullException(nameof(plainText));
-            if (key == null || key.Length == 0)
-                throw new ArgumentNullException(nameof(key));
-            if (iv == null || iv.Length == 0)
-                throw new ArgumentNullException(nameof(iv));
+            if (plainText == null || plainText.Length <= 0)
+                throw new ArgumentNullException("plainText");
+            if (key == null || key.Length <= 0)
+                throw new ArgumentNullException("key");
+            if (iv == null || iv.Length <= 0)
+                throw new ArgumentNullException("iv");
 
+            byte[] encrypted;
             using (Aes aes = Aes.Create())
             {
                 aes.Key = key;
@@ -88,24 +89,30 @@ namespace StrategySync
                 aes.Mode = CipherMode.CBC;
 
                 using (MemoryStream ms = new MemoryStream())
-                using (CryptoStream cs = new CryptoStream(ms, aes.CreateEncryptor(), CryptoStreamMode.Write))
-                using (StreamWriter sw = new StreamWriter(cs))
                 {
-                    sw.Write(plainText);
-                    return ms.ToArray();
+                    using (CryptoStream cs = new CryptoStream(ms, aes.CreateEncryptor(), CryptoStreamMode.Write))
+                    {
+                        using (StreamWriter sw = new StreamWriter(cs))
+                        {
+                            sw.Write(plainText);
+                        }
+                        encrypted = ms.ToArray();
+                    }
                 }
             }
+            return encrypted;
         }
 
         public static string DecryptStringFromBytes(byte[] cipherText, byte[] key, byte[] iv)
         {
-            if (cipherText == null || cipherText.Length == 0)
-                throw new ArgumentNullException(nameof(cipherText));
-            if (key == null || key.Length == 0)
-                throw new ArgumentNullException(nameof(key));
-            if (iv == null || iv.Length == 0)
-                throw new ArgumentNullException(nameof(iv));
+            if (cipherText == null || cipherText.Length <= 0)
+                throw new ArgumentNullException("cipherText");
+            if (key == null || key.Length <= 0)
+                throw new ArgumentNullException("key");
+            if (iv == null || iv.Length <= 0)
+                throw new ArgumentNullException("iv");
 
+            string decrypted;
             using (Aes aes = Aes.Create())
             {
                 aes.Key = key;
@@ -114,12 +121,17 @@ namespace StrategySync
                 aes.Mode = CipherMode.CBC;
 
                 using (MemoryStream ms = new MemoryStream(cipherText))
-                using (CryptoStream cs = new CryptoStream(ms, aes.CreateDecryptor(), CryptoStreamMode.Read))
-                using (StreamReader sr = new StreamReader(cs))
                 {
-                    return sr.ReadToEnd();
+                    using (CryptoStream cs = new CryptoStream(ms, aes.CreateDecryptor(), CryptoStreamMode.Read))
+                    {
+                        using (StreamReader sr = new StreamReader(cs))
+                        {
+                            decrypted = sr.ReadToEnd();
+                        }
+                    }
                 }
             }
+            return decrypted;
         }
 
         public static byte[] GenerateKey(string password)
