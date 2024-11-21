@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using StrategySync.Classes;
+using StrategySync.Classes.DA;
 
 namespace StrategySync
 {
@@ -29,7 +31,16 @@ namespace StrategySync
 
         public bool ValidateLoginInfo()
         {
-            return false;
+            var retrievedUser = UserDA.ReadRecord(Source.Username);
+            var decryptedPassword = User.DecryptStringFromBytes(retrievedUser.EncryptedPassword, retrievedUser.AESKey, retrievedUser.AESIV);
+            Source.Salt = retrievedUser.Salt;
+
+            if (decryptedPassword == Source.HashPasswordWithArgon2(Source.PasswordString)) {
+                return true;
+            } else
+            {
+                return false;
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

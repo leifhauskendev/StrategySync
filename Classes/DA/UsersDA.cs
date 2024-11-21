@@ -37,15 +37,19 @@ namespace StrategySync.Classes.DA
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
-                using (MySqlCommand command = new MySqlCommand("SELECT * FROM Users WHERE User=@user", connection))
+                using (MySqlCommand command = new MySqlCommand("SELECT * FROM Users WHERE username=@username", connection))
                 {
-                    command.Parameters.AddWithValue("@user", username);
+                    command.Parameters.AddWithValue("@username", username);
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
-                        if (reader.Read())
+                        while (reader.Read())
                         {
-                            userInfo.Username = reader.GetString("User");
+                            userInfo.Username = reader.GetString("Username");
                             userInfo.Salt = (byte[])reader.GetValue(reader.GetOrdinal("Salt"));
+                            userInfo.EncryptedPassword = (byte[])reader.GetValue(reader.GetOrdinal("Password"));
+                            userInfo.Salt = (byte[])reader.GetValue(reader.GetOrdinal("Salt"));
+                            userInfo.AESKey = (byte[])reader.GetValue(reader.GetOrdinal("AES_Key"));
+                            userInfo.AESIV = (byte[])reader.GetValue(reader.GetOrdinal("AES_IV"));
                         }
                     }
                 }
