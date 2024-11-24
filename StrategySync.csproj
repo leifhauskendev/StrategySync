@@ -121,8 +121,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Classes\DA\StrategiesDA.cs" />
+    <Compile Include="Classes\DA\StrategiesItemDA.cs" />
     <Compile Include="Classes\DA\UsersDA.cs" />
     <Compile Include="Classes\Security\AES.cs" />
+    <Compile Include="Classes\Strategy\Strategy.cs" />
+    <Compile Include="Classes\Strategy\StrategyItem.cs" />
     <Compile Include="Classes\User\User.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
