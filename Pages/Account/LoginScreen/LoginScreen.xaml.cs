@@ -1,4 +1,5 @@
 ﻿using StrategySync.Classes.DA;
+using StrategySync.Pages.Stratagies.StrategyScreen;
 using System;
 using System.Security.Cryptography;
 using System.Windows;
@@ -21,37 +22,22 @@ namespace StrategySync.Pages.Account
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            // Retrieve the username and password from the TextBoxes
-            string username = UsernameTextBox.Text;
-            string password = PasswordTextBox.Text;
-            string email = "test"; // Assume there's a TextBox for email
-            string usersFriends = "test"; // Assume there's a TextBox for users' friends
-
-            // Generate a random salt for this user
-            byte[] salt = User.GenerateSalt();
-
-            // Generate AES encryption key and IV (you can customize these methods)
-            byte[] aesKey = User.GenerateKey(password);
-            byte[] aesIV = User.GenerateIV();
-
-            // Create a new User instance with all properties
-            User newUser = new User
+            if (ViewModel.ValidateLoginInfo())
             {
-                Username = username,
-                Email = email,
-                Salt = salt,
-                AESKey = aesKey,
-                AESIV = aesIV,
-                UsersFriends = usersFriends
-            };
+                NavigationService.Navigate(new StrategyScreen());
+            } else {
+                MessageBox.Show("Username or password is incorrect.");
+            }
+        }
+        private void CreateAccountButton_Click(object sender, RoutedEventArgs e)
+        {
+            var createAccountWindow = new CreateAccount.CreateAccount();
+            createAccountWindow.ShowDialog();
+        }
 
-            // Hash the password using Argon2
-            newUser.PasswordString = newUser.HashPasswordWithArgon2(password);
-            newUser.EncryptedPassword = User.EncryptStringToBytes(newUser.PasswordString, newUser.AESKey, newUser.AESIV);
-            // Insert the user into the database
-            UserDA.CreateRecord(newUser);
-
-            MessageBox.Show("User created successfully.");
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            ViewModel.Source.PasswordString = PasswordBox.Password;
         }
     }
 }
