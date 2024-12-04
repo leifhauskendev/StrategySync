@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StrategySync.Classes.Strategy;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,8 @@ namespace StrategySync
     /// </summary>
     public partial class App : Application
     {
+        public string User { get; set; } = "undefined";
+
+        public Strategy CurrentStrategy;
     }
 }

@@ -143,3 +143,9 @@ C:\Users\leifh\Source\Repos\leifhauskendev\StrategySync\obj\Debug\Pages\Account\
 C:\Users\leifh\Source\Repos\leifhauskendev\StrategySync\obj\Debug\Pages\Account\CreateAccount\CreateAccount.baml
 C:\Users\leifh\Source\Repos\leifhauskendev\StrategySync\obj\Debug\Pages\Stratagies\StrategyScreen\StrategyScreen.g.cs
 C:\Users\leifh\Source\Repos\leifhauskendev\StrategySync\obj\Debug\Pages\Stratagies\StrategyScreen\StrategyScreen.baml
+C:\Users\leifh\Source\Repos\leifhauskendev\StrategySync\obj\Debug\Pages\Stratagies\SelectStrategy\SelectStrategy.g.cs
+C:\Users\leifh\Source\Repos\leifhauskendev\StrategySync\obj\Debug\Pages\Stratagies\SelectStrategy\SelectStrategy.baml
+C:\Users\leifh\Source\Repos\leifhauskendev\StrategySync\obj\Debug\Pages\Stratagies\CreateStrategy\CreateStrategy.g.cs
+C:\Users\leifh\Source\Repos\leifhauskendev\StrategySync\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\leifh\Source\Repos\leifhauskendev\StrategySync\obj\Debug\Pages\Stratagies\CreateStrategy\CreateStrategy.baml
+C:\Users\leifh\Source\Repos\leifhauskendev\StrategySync\obj\Debug\Pages\Stratagies\CreateStrategy\CreateStrategyWindow.g.cs
