@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using StrategySync.Classes;
 using StrategySync.Classes.DA;
+using System.Windows;
 
 namespace StrategySync
 {
@@ -36,6 +37,8 @@ namespace StrategySync
             Source.Salt = retrievedUser.Salt;
 
             if (decryptedPassword == Source.HashPasswordWithArgon2(Source.PasswordString)) {
+                var app = (App)Application.Current;
+                app.User = Source.Username;
                 return true;
             } else
             {

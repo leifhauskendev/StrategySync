@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StrategySync.Pages.Account.CreateAccount;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Policy;
@@ -39,6 +40,9 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
             ViewModel = new StrategyScreenVM();
             this.DataContext = ViewModel;
             DrawingCanvas.EditingMode = InkCanvasEditingMode.None;
+
+            var selectStrategyWindow = new SelectStrategy();
+            selectStrategyWindow.ShowDialog();
         }
 
         private void EraserBtn_Click(object sender, RoutedEventArgs e)

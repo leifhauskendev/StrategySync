@@ -1,5 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
+using StrategySync.Classes.Strategy;
 using System;
+using System.Collections.ObjectModel;
 
 namespace StrategySync.Classes.DA
 {
@@ -78,6 +80,35 @@ namespace StrategySync.Classes.DA
                     command.ExecuteNonQuery();
                 }
             }
+        }
+
+        public static ObservableCollection<StrategyListItem> GetStrategyListItemsByUser(string user)
+        {
+            var strategyList = new ObservableCollection<StrategyListItem>();
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                using (MySqlCommand command = new MySqlCommand("SELECT * FROM strategies WHERE user_ids LIKE @User", connection))
+                {
+                    command.Parameters.AddWithValue("@User", '%' + user + '%');
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            strategyList.Add(new StrategyListItem
+                            {
+                                MapID = reader.GetInt32("map_id"),
+                                Name = reader.GetString("strategy_name"),
+                                Description = reader.GetString("description"),
+                                LastOpened = reader.GetDateTime("last_opened"),
+                                IsCheckedOut = reader.GetBoolean("is_checked")
+                            });
+                        }
+                    }
+                }
+            }
+
+            return strategyList;
         }
     }
 }
