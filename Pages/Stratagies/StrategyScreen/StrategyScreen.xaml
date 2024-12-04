@@ -5,10 +5,115 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:StrategySync.Pages.Stratagies.StrategyScreen"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Title="StrategyScreen">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1024"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="0.5*"/>
+                </Grid.RowDefinitions>
+            </Grid>
+            <StackPanel Grid.Row="0" Height="540">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="0.75*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Map" HorizontalAlignment="Center" Grid.Row="0" FontSize="20" Padding="20"/>
+                    <!--text box for strat description here-->
+                </Grid>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Height="540">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="0.33*"/>
+                        <RowDefinition Height="0.33*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Lineup" HorizontalAlignment="Center" Grid.Row="0" FontSize="20" Padding="20"/>
+                    <!--lineup image if applicable and description here-->
+                </Grid>
+            </StackPanel>
+        </StackPanel>
+        <Image Source="/Media/Maps/MirageMap.png" Grid.Column="1"/>
+        <Canvas x:Name="ItemCanvas" Grid.Column="1" Background="Transparent" PreviewMouseMove="ItemCanvas_PreviewMouseMove" PreviewMouseUp="ItemCanvas_PreviewMouseUp" Width="1024" Height="1024"/>
+        <InkCanvas x:Name="DrawingCanvas" Grid.Column="1" Background="Transparent"/>
+
+        <!--<Canvas x:Name="ItemCanvas" Grid.Column="1" Background="Transparent" PreviewMouseMove="ItemCanvas_PreviewMouseMove" PreviewMouseUp="ItemCanvas_PreviewMouseUp" Width="1024" Height="1024"/>-->
+
+        <StackPanel Grid.Column="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+            </Grid>
+            <StackPanel Grid.Row="0" Height="540">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="0.75*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Grenades" HorizontalAlignment="Center" Grid.Row="0" FontSize="20" Padding="20"/>
+                    <StackPanel Grid.Row="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <Image x:Name="Flashbang" Source="https://static.wikia.nocookie.net/cswikia/images/f/f3/Flashbanghud_csgo.png/revision/latest?cb=20211113165814" Grid.Column="0" Grid.Row="0" Width="200" ToolTip="Click to add flashbang to the board" MouseDown="NewItem_MouseDown"/>
+                            <Image x:Name="SmokeGrenade" Source="https://static.wikia.nocookie.net/cswikia/images/7/76/Smokegrenadehud_csgo.png/revision/latest?cb=20211113165620" Grid.Column="1" Grid.Row="0" Width="200" ToolTip="Click to add smoke grenade to the board" MouseDown="NewItem_MouseDown"/>
+                            <Image x:Name="Molotov" Source="https://static.wikia.nocookie.net/cswikia/images/5/56/Molotovhud.png/revision/latest?cb=20211113171930" Grid.Column="0" Grid.Row="1" Width="200" ToolTip="Click to add molotov to the board" MouseDown="NewItem_MouseDown"/>
+                            <Image x:Name="HeGrenade" Source="https://static.wikia.nocookie.net/cswikia/images/c/ce/Hegrenadehud_csgo.png/revision/latest/thumbnail/width/360/height/360?cb=20211113165930" Grid.Column="1" Grid.Row="1" Width="200" ToolTip="Click to add HE grenade to the board" MouseDown="NewItem_MouseDown"/>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Height="270">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="0.33*"/>
+                        <RowDefinition Height="0.33*"/>
+                    </Grid.RowDefinitions>
+                    <Image x:Name="Friendly" Source="https://i.ibb.co/CBNmWDD/Friendly-12-3-2024.jpg" HorizontalAlignment="Center" Grid.Row="1" MouseDown="NewItem_MouseDown"/>
+                    <Image x:Name="Enemy" Source="https://i.ibb.co/BCsYj4q/Enemy-12-3-2024.jpg" HorizontalAlignment="Center" Grid.Row="2" MouseDown="NewItem_MouseDown"/>
+                </Grid>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Height="270">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="0.33*"/>
+                        <RowDefinition Height="0.33*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Drawing" HorizontalAlignment="Center" Grid.Row="0" FontSize="20" Padding="20"/>
+                    <StackPanel Orientation="Horizontal" Margin="5,10,0,0" Grid.Row="1" HorizontalAlignment="Center">
+                        <ToggleButton x:Name="PenBtn" Padding="5" Margin="0,0,10,0" ToolTip="Pen" Background="White" Click="PenBtn_Click">
+                            <Image Height="24" Width="24" Source="https://img.icons8.com/fluency/48/pen-1.png"/>
+                        </ToggleButton>
+                        <ToggleButton x:Name="EraserBtn" Padding="5" Margin="0,0,10,0" ToolTip="Eraser" Background="White" Click="EraserBtn_Click">
+                            <Image Height="24" Width="24" Source="https://img.icons8.com/fluency/48/erase.png"/>
+                        </ToggleButton>
+                    </StackPanel>
+                    <!--drawing items here-->
+                </Grid>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

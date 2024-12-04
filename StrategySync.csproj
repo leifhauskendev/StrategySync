@@ -158,6 +158,7 @@
     <Compile Include="Pages\Stratagies\StrategyScreen\StrategyScreen.xaml.cs">
       <DependentUpon>StrategyScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Stratagies\StrategyScreen\StrategyScreenVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -184,6 +185,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Media\Maps\MirageMap.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
