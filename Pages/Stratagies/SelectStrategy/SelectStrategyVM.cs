@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace StrategySync.Pages.Stratagies.StrategyScreen
+namespace StrategySync.Pages.Stratagies
 {
     public class SelectStrategyVM : INotifyPropertyChanged
     {

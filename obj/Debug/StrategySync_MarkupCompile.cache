@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\leifh\Source\Repos\leifhauskendev\StrategySync\App.xaml
-5475100453
+5545941393
 
-25-469764576
+25385352224
 35-399410259
-MainWindow.xaml;Pages\Account\LoginScreen\LoginScreen.xaml;Pages\Stratagies\CreateStrategy\CreateStrategy.xaml;Pages\Stratagies\SelectStrategy\SelectStrategy.xaml;Pages\Stratagies\StrategyScreen\StrategyScreen.xaml;
+MainWindow.xaml;Pages\Account\LoginScreen\LoginScreen.xaml;Pages\Stratagies\CreateStrategy\CreateStrategyWindow.xaml;Pages\Stratagies\SelectStrategy\SelectStrategy.xaml;Pages\Stratagies\StrategyScreen\StrategyScreen.xaml;
 
 True
 

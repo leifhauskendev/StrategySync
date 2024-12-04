@@ -139,6 +139,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Stratagies\CreateStrategy\CreateStrategyWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Stratagies\SelectStrategy\SelectStrategy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -156,6 +160,9 @@
     </Compile>
     <Compile Include="Pages\Account\LoginScreen\LoginScreenVM.cs" />
     <Compile Include="Pages\Stratagies\CreateStrategy\CreateStrategyVM.cs" />
+    <Compile Include="Pages\Stratagies\CreateStrategy\CreateStrategyWindow.xaml.cs">
+      <DependentUpon>CreateStrategyWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Stratagies\SelectStrategy\SelectStrategy.xaml.cs">
       <DependentUpon>SelectStrategy.xaml</DependentUpon>
     </Compile>

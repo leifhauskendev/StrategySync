@@ -148,3 +148,4 @@ C:\Users\leifh\Source\Repos\leifhauskendev\StrategySync\obj\Debug\Pages\Stratagi
 C:\Users\leifh\Source\Repos\leifhauskendev\StrategySync\obj\Debug\Pages\Stratagies\CreateStrategy\CreateStrategy.g.cs
 C:\Users\leifh\Source\Repos\leifhauskendev\StrategySync\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\leifh\Source\Repos\leifhauskendev\StrategySync\obj\Debug\Pages\Stratagies\CreateStrategy\CreateStrategy.baml
+C:\Users\leifh\Source\Repos\leifhauskendev\StrategySync\obj\Debug\Pages\Stratagies\CreateStrategy\CreateStrategyWindow.g.cs

@@ -1,4 +1,4 @@
-﻿using StrategySync.Pages.Stratagies.StrategyScreen;
+﻿using StrategySync.Pages.Stratagies.CreateStrategy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,21 +16,20 @@ using System.Windows.Shapes;
 namespace StrategySync.Pages.Stratagies
 {
     /// <summary>
-    /// Interaction logic for SelectStrategy.xaml
+    /// Interaction logic for CreateStrategy.xaml
     /// </summary>
-    public partial class SelectStrategy : Window
+    public partial class CreateStrategyWindow : Window
     {
-        public SelectStrategy()
+        public CreateStrategyWindow()
         {
             InitializeComponent();
-            var ViewModel = new SelectStrategyVM();
+            var ViewModel = new CreateStrategyVM();
             this.DataContext = ViewModel;
         }
 
-        private void CreateStrategy_Click(object sender, RoutedEventArgs e)
+        private void Create_Click(object sender, RoutedEventArgs e)
         {
-            var createStrategyWindow = new CreateStrategyWindow();
-            createStrategyWindow.ShowDialog();
+
         }
     }
 }
