@@ -207,7 +207,7 @@
 		  <SubType>Designer</SubType>
 		  <Generator>MSBuild:Compile</Generator>
 	  </Page>
-	  <Page Include="Pages\Account\LoginScreen\LoginScreen.xaml">
+	  <Page Include="Pages\Account\LoginScreen\LoginScreen.xaml"/>
     <Page Include="Pages\Stratagies\CreateStrategy\CreateStrategyWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

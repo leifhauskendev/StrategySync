@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\leifh\Source\Repos\leifhauskendev\StrategySync\obj\Debug\
+C:\Users\andyb\Source\Repos\StrategySync\obj\Debug\
 StrategySync
 none
 false
 DEBUG;TRACE
-C:\Users\leifh\Source\Repos\leifhauskendev\StrategySync\App.xaml
-5545941393
+C:\Users\andyb\Source\Repos\StrategySync\App.xaml
+7-48764097
 
-26-1987836951
-35-399410259
-MainWindow.xaml;Pages\Account\LoginScreen\LoginScreen.xaml;Pages\Stratagies\CreateStrategy\CreateStrategyWindow.xaml;Pages\Stratagies\SelectStrategy\SelectStrategy.xaml;Pages\Stratagies\StrategyScreen\StrategyScreen.xaml;
+2976155349
+150717662737
+MainWindow.xaml;Pages\Account\LoginScreen\LoginScreen.xaml;Pages\Account\ForgotPassword\ForgotPassword.xaml;Pages\Account\LoginScreen\LoginScreen.xaml;Pages\Stratagies\CreateStrategy\CreateStrategyWindow.xaml;Pages\Stratagies\SelectStrategy\SelectStrategy.xaml;Pages\Stratagies\StrategyScreen\StrategyScreen.xaml;
 
 True
 
