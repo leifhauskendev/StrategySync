@@ -34,6 +34,11 @@ namespace StrategySync.Pages.Account
             var createAccountWindow = new CreateAccount.CreateAccount();
             createAccountWindow.ShowDialog();
         }
+        private void ForgotPasswordButton_Click(object sender, RoutedEventArgs e)
+        {
+            var forgotPasswordWindow = new ForgotPassword.ForgotPassword();
+            forgotPasswordWindow.ShowDialog();
+        }
 
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
