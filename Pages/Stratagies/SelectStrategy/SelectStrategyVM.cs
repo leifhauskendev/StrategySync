@@ -18,7 +18,7 @@ namespace StrategySync.Pages.Stratagies
             GetStrategies();
         }
 
-        private ObservableCollection<StrategyListItem> _source;
+        private ObservableCollection<StrategyListItem> _source = new ObservableCollection<StrategyListItem>();
 
         public ObservableCollection<StrategyListItem> Source
         {
@@ -94,6 +94,26 @@ namespace StrategySync.Pages.Stratagies
                 NoDataTextVisiblity = Visibility.Hidden;
                 StrategyListVisiblity = Visibility.Visible;
             }
+        }
+
+        public bool GetSelectedStrategyById (int id)
+        {
+            var app = (App)Application.Current;
+            var strategy = StrategiesDA.ReadRecord(id);
+            var strategyItems = StrategiesItemDA.ReadRecordsByStrategyId(id);
+
+            if (strategy != null) 
+            {
+                app.CurrentStrategy = strategy;
+
+                if (strategyItems != null)
+                {
+                    strategy.StrategyItems = strategyItems;
+                }
+                return true;
+            }
+
+            return false;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

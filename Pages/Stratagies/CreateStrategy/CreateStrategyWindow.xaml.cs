@@ -20,16 +20,25 @@ namespace StrategySync.Pages.Stratagies
     /// </summary>
     public partial class CreateStrategyWindow : Window
     {
+        CreateStrategyVM ViewModel = new CreateStrategyVM();
         public CreateStrategyWindow()
         {
             InitializeComponent();
-            var ViewModel = new CreateStrategyVM();
             this.DataContext = ViewModel;
         }
 
         private void Create_Click(object sender, RoutedEventArgs e)
         {
+            var app = (App)Application.Current;
+            ViewModel.Source.IsNew = true;
+            app.CurrentStrategy = ViewModel.Source;
+            this.Close();
+        }
 
+        private void Map_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ViewModel.Source.Map = (Enumerations.StrategyEnums.Map)MapComboBox.SelectedIndex;
+            ViewModel.Source.MapID = MapComboBox.SelectedIndex;
         }
     }
 }
