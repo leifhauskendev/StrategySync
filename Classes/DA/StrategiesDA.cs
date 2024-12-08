@@ -9,13 +9,14 @@ namespace StrategySync.Classes.DA
     {
         private static string connectionString = "Server=strategysync.mysql.database.azure.com; Port=3306; Database=strategysync; Uid=sysadmin; Pwd=Password1!; SslMode=Required;";
 
-        public static void CreateRecord(Strategy.Strategy strategy)
+        public static int CreateRecord(Strategy.Strategy strategy)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
                 using (MySqlCommand command = new MySqlCommand(
-                    "INSERT INTO strategies(map_id, strategy_name, description, last_opened, is_checked, user_ids) VALUES(@MapId, @StrategyName, @Description, @LastOpened, @IsChecked, @UserIds)", connection))
+                    "INSERT INTO strategies(map_id, strategy_name, description, last_opened, is_checked, user_ids, drawing) " +
+                    "VALUES(@MapId, @StrategyName, @Description, @LastOpened, @IsChecked, @UserIds, @Drawing); SELECT LAST_INSERT_ID();", connection))
                 {
                     command.Parameters.AddWithValue("@MapId", strategy.MapID);
                     command.Parameters.AddWithValue("@StrategyName", strategy.Name);
@@ -23,22 +24,23 @@ namespace StrategySync.Classes.DA
                     command.Parameters.AddWithValue("@LastOpened", strategy.LastOpened);
                     command.Parameters.AddWithValue("@IsChecked", strategy.IsCheckedOut);
                     command.Parameters.AddWithValue("@UserIds", strategy.UserIds);
+                    command.Parameters.AddWithValue("@Drawing", strategy.Drawing);
 
-                    command.ExecuteNonQuery();
+                    return Convert.ToInt32(command.ExecuteScalar());
                 }
             }
         }
 
-         
-        public static Strategy.Strategy ReadRecord(string strategyName)
+
+        public static Strategy.Strategy ReadRecord(int strategyID)
         {
             Strategy.Strategy strategyInfo = null;
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
-                using (MySqlCommand command = new MySqlCommand("SELECT * FROM strategies WHERE strategy_name = @StrategyName", connection))
+                using (MySqlCommand command = new MySqlCommand("SELECT * FROM strategies WHERE strategy_id = @StrategyID", connection))
                 {
-                    command.Parameters.AddWithValue("@StrategyName", strategyName);
+                    command.Parameters.AddWithValue("@StrategyID", strategyID);
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
                         if (reader.Read())
@@ -51,7 +53,8 @@ namespace StrategySync.Classes.DA
                                 Description = reader.GetString("description"),
                                 LastOpened = reader.GetDateTime("last_opened"),
                                 IsCheckedOut = reader.GetBoolean("is_checked"),
-                                UserIds = reader.GetString("user_ids")
+                                UserIds = reader.GetString("user_ids"),
+                                Drawing = reader["drawing"] as byte[]
                             };
                         }
                     }
@@ -67,7 +70,7 @@ namespace StrategySync.Classes.DA
             {
                 connection.Open();
                 using (MySqlCommand command = new MySqlCommand(
-                    @"UPDATE strategies SET map_id = @MapId, strategy_name = @StrategyName, description = @Description, last_opened = @LastOpened, is_checked = @IsChecked, user_ids = @UserIds WHERE strategy_id = @StrategyID", connection))
+                    @"UPDATE strategies SET map_id = @MapId, strategy_name = @StrategyName, description = @Description, last_opened = @LastOpened, is_checked = @IsChecked, user_ids = @UserIds, drawing = @Drawing WHERE strategy_id = @StrategyID", connection))
                 {
                     command.Parameters.AddWithValue("@MapId", strategy.MapID);
                     command.Parameters.AddWithValue("@StrategyName", strategy.Name);
@@ -75,6 +78,7 @@ namespace StrategySync.Classes.DA
                     command.Parameters.AddWithValue("@LastOpened", strategy.LastOpened);
                     command.Parameters.AddWithValue("@IsChecked", strategy.IsCheckedOut);
                     command.Parameters.AddWithValue("@UserIds", strategy.UserIds);
+                    command.Parameters.AddWithValue("@Drawing", strategy.Drawing);
                     command.Parameters.AddWithValue("@StrategyID", strategy.StrategyID);
 
                     command.ExecuteNonQuery();
@@ -97,6 +101,7 @@ namespace StrategySync.Classes.DA
                         {
                             strategyList.Add(new StrategyListItem
                             {
+                                StrategyID = reader.GetInt32("strategy_id"),
                                 MapID = reader.GetInt32("map_id"),
                                 Name = reader.GetString("strategy_name"),
                                 Description = reader.GetString("description"),

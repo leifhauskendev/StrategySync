@@ -1,10 +1,16 @@
-﻿using System;
+﻿using StrategySync.Enumerations.StrategyEnums;
+using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 namespace StrategySync.Classes.Strategy
 {
     public class Strategy : INotifyPropertyChanged
     {
+        public Strategy() { 
+            IsNew = false;
+        }   
+
         private int _strategyID;
         private int _mapID;
         private string _name;
@@ -12,8 +18,8 @@ namespace StrategySync.Classes.Strategy
         private DateTime _lastOpened;
         private bool _isCheckedOut;
         private string _userIDs;
-
-
+        private byte[] _drawing;
+        private ObservableCollection<StrategyItem> _strategyItems;
 
         public int StrategyID
         {
@@ -38,6 +44,7 @@ namespace StrategySync.Classes.Strategy
                     _mapID = value;
                     OnPropertyChanged(nameof(MapID));
                 }
+                Map = (Map)value;
             }
         }
 
@@ -105,6 +112,36 @@ namespace StrategySync.Classes.Strategy
                 }
             }
         }
+
+        public byte[] Drawing
+        {
+            get { return _drawing; }
+            set
+            {
+                if (_drawing != value)
+                {
+                    _drawing = value;
+                    OnPropertyChanged(nameof(Drawing));
+                }
+            }
+        }
+
+        public ObservableCollection<StrategyItem> StrategyItems
+        {
+            get { return _strategyItems; }
+            set
+            {
+                if (_strategyItems != value)
+                {
+                    _strategyItems = value;
+                    OnPropertyChanged(nameof(StrategyItems));
+                }
+            }
+        }
+
+        public Map Map { get; set; }
+
+        public bool IsNew { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)

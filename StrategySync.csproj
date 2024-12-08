@@ -184,7 +184,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Classes\Coverters\EnumToListConverter.cs" />
+    <Compile Include="BL\StrategyBL.cs" />
+    <Compile Include="Classes\Converters\EnumToIntConverter.cs" />
+    <Compile Include="Classes\Converters\EnumToListConverter.cs" />
     <Compile Include="Classes\DA\StrategiesDA.cs" />
     <Compile Include="Classes\DA\StrategiesItemDA.cs" />
     <Compile Include="Classes\DA\UsersDA.cs" />
@@ -199,6 +201,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\Account\CreateAccount\CreateAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Account\LoginScreen\LoginScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -222,6 +228,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainWindowVM.cs" />
+    <Compile Include="Pages\Account\CreateAccount\CreateAccount.xaml.cs">
+      <DependentUpon>CreateAccount.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Account\CreateAccount\CreateAccountVM.cs" />
     <Compile Include="Pages\Account\ForgotPassword\ForgotPassword.xaml.cs">
       <DependentUpon>ForgotPassword.xaml</DependentUpon>

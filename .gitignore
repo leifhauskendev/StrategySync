@@ -1,6 +1,5 @@
-﻿# Exclude Visual Studio temporary files and folders
+# Exclude Visual Studio temporary files and folders
 .vs/
-
 # Exclude build output folders
 bin/
 obj/

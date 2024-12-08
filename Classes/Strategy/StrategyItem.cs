@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Windows.Controls;
 
 namespace StrategySync.Classes.Strategy
 {
@@ -7,11 +8,11 @@ namespace StrategySync.Classes.Strategy
     {
         private int _itemID;
         private int _strategyID;
-        private int _roleID;
-        private int _grenadeID;
+        private int _itemType;
         private string _description;
         private float _xCoordinate;
         private float _yCoordinate;
+        private Image _image;
 
 
 
@@ -41,28 +42,15 @@ namespace StrategySync.Classes.Strategy
             }
         }
 
-        public int RoleID
+        public int ItemType
         {
-            get { return _roleID; }
+            get { return _itemType; }
             set
             {
-                if (_roleID != value)
+                if (_itemType != value)
                 {
-                    _roleID = value;
-                    OnPropertyChanged(nameof(RoleID));
-                }
-            }
-        }
-
-        public int GrenadeID
-        {
-            get { return _grenadeID; }
-            set
-            {
-                if (_grenadeID != value)
-                {
-                    _grenadeID = value;
-                    OnPropertyChanged(nameof(GrenadeID));
+                    _itemType = value;
+                    OnPropertyChanged(nameof(ItemType));
                 }
             }
         }
@@ -102,6 +90,19 @@ namespace StrategySync.Classes.Strategy
                 {
                     _yCoordinate = value;
                     OnPropertyChanged(nameof(YCoordinate));
+                }
+            }
+        }
+
+        public Image Image
+        {
+            get { return _image; }
+            set
+            {
+                if (_image != value)
+                {
+                    _image = value;
+                    OnPropertyChanged(nameof(Image));
                 }
             }
         }

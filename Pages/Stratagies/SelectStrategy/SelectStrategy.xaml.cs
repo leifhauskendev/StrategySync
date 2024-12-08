@@ -1,4 +1,5 @@
-﻿using StrategySync.Pages.Stratagies.StrategyScreen;
+﻿using StrategySync.Classes.Strategy;
+using StrategySync.Pages.Stratagies.StrategyScreen;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,10 +21,11 @@ namespace StrategySync.Pages.Stratagies
     /// </summary>
     public partial class SelectStrategy : Window
     {
+        SelectStrategyVM ViewModel;
         public SelectStrategy()
         {
             InitializeComponent();
-            var ViewModel = new SelectStrategyVM();
+            ViewModel = new SelectStrategyVM();
             this.DataContext = ViewModel;
         }
 
@@ -31,6 +33,32 @@ namespace StrategySync.Pages.Stratagies
         {
             var createStrategyWindow = new CreateStrategyWindow();
             createStrategyWindow.ShowDialog();
+            var app = (App)Application.Current;
+            if (app.CurrentStrategy != null)
+            {
+                this.Close();
+            }
+        }
+
+        private void Strategy_Click(object sender, MouseButtonEventArgs e)
+        {
+            var grid = sender as Grid;
+            var strategy = grid.DataContext as StrategyListItem;
+            if (!strategy.IsCheckedOut)
+            {
+                if (ViewModel.GetSelectedStrategyById(strategy.StrategyID))
+                {
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Unable to retrieve strategy.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            else 
+            {
+                MessageBox.Show("Cannot open a strategy that is checked out", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

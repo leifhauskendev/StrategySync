@@ -1,6 +1,10 @@
-﻿using StrategySync.Pages.Account.CreateAccount;
+﻿using StrategySync.Classes.Strategy;
+using StrategySync.Enumerations.StrategyEnums;
+using StrategySync.Pages.Account.CreateAccount;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
@@ -43,6 +47,13 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
 
             var selectStrategyWindow = new SelectStrategy();
             selectStrategyWindow.ShowDialog();
+            var app = (App)Application.Current;
+            ViewModel.Source = app.CurrentStrategy;
+            if (ViewModel.Source.StrategyItems == null)
+            {
+                ViewModel.Source.StrategyItems = new ObservableCollection<StrategyItem>();
+            }
+            SetOnscreenItems();
         }
 
         private void EraserBtn_Click(object sender, RoutedEventArgs e)
@@ -115,6 +126,18 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
 
         private void ItemCanvas_PreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
+            Image image = (Image)this.dragObject;
+            if (image != null)
+            {
+                if (image.Tag != null)
+                {
+                    var position = e.GetPosition(sender as IInputElement);
+                    StrategyItem strategyItem = image.Tag as StrategyItem;
+                    strategyItem.XCoordinate = (float)position.X - (float)this.offset.X;
+                    strategyItem.YCoordinate = (float)position.Y - (float)this.offset.Y;
+                }
+            }
+            
             this.dragObject = null;
             this.ItemCanvas.ReleaseMouseCapture();
         }
@@ -122,43 +145,9 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
         private void NewItem_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image clickedItem = sender as Image;
-            Image newItem = new Image();
-            newItem.Width = 50;
-            newItem.Height = 50;
-            BitmapImage bitmap = new BitmapImage();
-            bitmap.BeginInit();
-            switch (clickedItem.Name)
-            {
-                case "Flashbang":
-                    bitmap.UriSource = new Uri("https://static.wikia.nocookie.net/cswikia/images/f/f3/Flashbanghud_csgo.png/revision/latest?cb=20211113165814", UriKind.Absolute);
-                    break;
-                case "SmokeGrenade":
-                    bitmap.UriSource = new Uri("https://static.wikia.nocookie.net/cswikia/images/7/76/Smokegrenadehud_csgo.png/revision/latest?cb=20211113165620", UriKind.Absolute);
-                    break;
-                case "Molotov":
-                    bitmap.UriSource = new Uri("https://static.wikia.nocookie.net/cswikia/images/5/56/Molotovhud.png/revision/latest?cb=20211113171930", UriKind.Absolute);
-                    break;
-                case "HeGrenade":
-                    bitmap.UriSource = new Uri("https://static.wikia.nocookie.net/cswikia/images/c/ce/Hegrenadehud_csgo.png/revision/latest/thumbnail/width/360/height/360?cb=20211113165930", UriKind.Absolute);
-                    break;
-                case "Friendly":
-                    bitmap.UriSource = new Uri("https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Pan_Blue_Circle.png/640px-Pan_Blue_Circle.png", UriKind.Absolute);
-                    newItem.Width = 20;
-                    newItem.Height = 20;
-                    break;
-                case "Enemy":
-                    bitmap.UriSource = new Uri("https://upload.wikimedia.org/wikipedia/commons/b/b1/Red-Circle-Transparent.png", UriKind.Absolute);
-                    newItem.Width = 20;
-                    newItem.Height = 20;
-                    break;
-
-            }
-            bitmap.EndInit();
-            newItem.Source = bitmap;
-            Canvas.SetTop(newItem, 20);
-            Canvas.SetLeft(newItem, 20);
-            newItem.PreviewMouseDown += item_PreviewMouseDown;
-            ItemCanvas.Children.Add(newItem);
+            StrategyItem newItem = new StrategyItem();
+            ViewModel.Source.StrategyItems.Add(newItem);
+            SetItemVisuals(newItem, clickedItem.Name, 20, 20);
             ItemCanvas.IsHitTestVisible = true;
             DrawingCanvas.IsHitTestVisible = false;
             PenBtn.IsChecked = false;
@@ -177,6 +166,126 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
             this.offset.Y -= Canvas.GetTop(this.dragObject);
             this.offset.X -= Canvas.GetLeft(this.dragObject);
             this.ItemCanvas.CaptureMouse();
+        }
+
+        private void SetOnscreenItems ()
+        {
+            ItemCanvas.IsHitTestVisible = true;
+            DrawingCanvas.IsHitTestVisible = false;
+            PenBtn.IsChecked = false;
+            EraserBtn.IsChecked = false;
+            penEnabled = false;
+            eraserEnabled = false;
+
+            BitmapImage bitmap = new BitmapImage();
+            bitmap.BeginInit();
+
+            switch (ViewModel.Source.Map)
+            {
+                case Map.Mirage:
+                    bitmap.UriSource = new Uri("https://static.wikia.nocookie.net/cswikia/images/9/95/Cs2_mirage_radar.png/revision/latest/scale-to-width-down/1000?cb=20231020111431");
+                    break;
+                case Map.Inferno:
+                    bitmap.UriSource = new Uri("https://static.wikia.nocookie.net/cswikia/images/1/11/CS2_inferno_radar.png/revision/latest/scale-to-width-down/1000?cb=20230901123108");
+                    break;
+                case Map.Dust2:
+                    bitmap.UriSource = new Uri("https://static.wikia.nocookie.net/cswikia/images/0/0f/Cs2_dust2_overview.png/revision/latest/scale-to-width-down/1000?cb=20230323162128");
+                    break;
+                case Map.Ancient:
+                    bitmap.UriSource = new Uri("https://static.wikia.nocookie.net/cswikia/images/9/9a/Ancient_Radar.png/revision/latest/scale-to-width-down/1000?cb=20221216234111");
+                    break;
+                case Map.Nuke:
+                    bitmap.UriSource = new Uri("https://static.wikia.nocookie.net/cswikia/images/8/8f/Cs2_nuke_radar.png/revision/latest/scale-to-width-down/1000?cb=20231020111944");
+                    break;
+                case Map.Vertigo:
+                    bitmap.UriSource = new Uri("https://static.wikia.nocookie.net/cswikia/images/3/35/De_vertigo_radar.png/revision/latest/scale-to-width-down/1000?cb=20240524233147");
+                    break;
+                case Map.Anubis:
+                    bitmap.UriSource = new Uri("https://static.wikia.nocookie.net/cswikia/images/a/ae/De_anubis_radar.png/revision/latest/scale-to-width-down/1000?cb=20220823205108");
+                    break;
+
+                default:
+                    break;
+            }
+
+            bitmap.EndInit();
+            MapImage.Source = bitmap;
+
+            if (!ViewModel.Source.IsNew)
+            {
+                foreach (StrategyItem item in ViewModel.Source.StrategyItems)
+                {
+                    SetItemVisuals(item, Enum.GetName(typeof(ItemType), item.ItemType), item.XCoordinate, item.YCoordinate);
+                }
+
+                SetInkCanvasFromByteArray(ViewModel.Source.Drawing);
+            }
+        }
+
+        private void SetItemVisuals(StrategyItem item, string itemTypeName, double x, double y)
+        {
+            item.Image = new Image();
+            item.Image.Width = 50;
+            item.Image.Height = 50;
+            item.Image.Tag = item;
+            BitmapImage bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            switch (itemTypeName)
+            {
+                case "Flashbang":
+                    bitmap.UriSource = new Uri("https://static.wikia.nocookie.net/cswikia/images/f/f3/Flashbanghud_csgo.png/revision/latest?cb=20211113165814", UriKind.Absolute);
+                    item.ItemType = (int)ItemType.Flashbang;
+                    break;
+                case "SmokeGrenade":
+                    bitmap.UriSource = new Uri("https://static.wikia.nocookie.net/cswikia/images/7/76/Smokegrenadehud_csgo.png/revision/latest?cb=20211113165620", UriKind.Absolute);
+                    item.ItemType = (int)ItemType.SmokeGrenade;
+                    break;
+                case "Molotov":
+                    bitmap.UriSource = new Uri("https://static.wikia.nocookie.net/cswikia/images/5/56/Molotovhud.png/revision/latest?cb=20211113171930", UriKind.Absolute);
+                    item.ItemType = (int)ItemType.Molotov;
+                    break;
+                case "HeGrenade":
+                    bitmap.UriSource = new Uri("https://static.wikia.nocookie.net/cswikia/images/c/ce/Hegrenadehud_csgo.png/revision/latest/thumbnail/width/360/height/360?cb=20211113165930", UriKind.Absolute);
+                    item.ItemType = (int)ItemType.HeGrenade;
+                    break;
+                case "Friendly":
+                    bitmap.UriSource = new Uri("https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Pan_Blue_Circle.png/640px-Pan_Blue_Circle.png", UriKind.Absolute);
+                    item.Image.Width = 20;
+                    item.Image.Height = 20;
+                    item.ItemType = (int)ItemType.Friendly;
+                    break;
+                case "Enemy":
+                    bitmap.UriSource = new Uri("https://upload.wikimedia.org/wikipedia/commons/b/b1/Red-Circle-Transparent.png", UriKind.Absolute);
+                    item.Image.Width = 20;
+                    item.Image.Height = 20;
+                    item.ItemType = (int)ItemType.Enemy;
+                    break;
+
+            }
+            bitmap.EndInit();
+            item.Image.Source = bitmap;
+            Canvas.SetTop(item.Image, y);
+            Canvas.SetLeft(item.Image, x);
+            item.Image.PreviewMouseDown += item_PreviewMouseDown;
+            ItemCanvas.Children.Add(item.Image);
+        }
+
+        private void SetInkCanvasFromByteArray(byte[] strokeData)
+        {
+            if (strokeData == null || strokeData.Length == 0)
+                return;
+
+            using (var memoryStream = new MemoryStream(strokeData))
+            {
+                StrokeCollection strokes = new StrokeCollection(memoryStream);
+
+                DrawingCanvas.Strokes = strokes;
+            }
+        }
+
+        private void Save_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ViewModel.SaveStrategy(DrawingCanvas);
         }
     }
 }
