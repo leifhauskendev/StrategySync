@@ -14,12 +14,18 @@
         </Grid.RowDefinitions>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="1"/>
+                <ColumnDefinition Width="40"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
             <Image x:Name="Save" Grid.Column="0" Source="https://static.thenounproject.com/png/2371021-200.png" Width="40" Height="40" HorizontalAlignment="Left" Margin="5" MouseDown="Save_MouseDown"/>
+            <Button Grid.Column="2" Width="32" Height="32" Click="ShareStrategyIcon_Click" ToolTip="Share Strategy" Background="Transparent" BorderBrush="Transparent">
+                <Image Source="/Media/Icons/share.png" Stretch="Uniform"/>
+            </Button>
+
+
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>

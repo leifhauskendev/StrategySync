@@ -2,6 +2,7 @@
 using StrategySync.Classes.Strategy;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace StrategySync.Classes.DA
 {
@@ -97,7 +98,7 @@ namespace StrategySync.Classes.DA
                     command.Parameters.AddWithValue("@User", '%' + user + '%');
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
-                        if (reader.Read())
+                        while (reader.Read())
                         {
                             strategyList.Add(new StrategyListItem
                             {
@@ -115,5 +116,43 @@ namespace StrategySync.Classes.DA
 
             return strategyList;
         }
+
+        public static bool ShareStrategy(int strategyID, string newUser)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string currentUserIds = null;
+                using (MySqlCommand command = new MySqlCommand("SELECT user_ids FROM strategies WHERE strategy_id = @StrategyID", connection))
+                {
+                    command.Parameters.AddWithValue("@StrategyID", strategyID);
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            currentUserIds = reader["user_ids"]?.ToString();
+                        }
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(currentUserIds) && currentUserIds.Split(',').Contains(newUser))
+                {
+                    return false;
+                }
+
+                string updatedUserIds = string.IsNullOrEmpty(currentUserIds) ? newUser : $"{currentUserIds},{newUser}";
+
+                using (MySqlCommand command = new MySqlCommand("UPDATE strategies SET user_ids = @UserIds WHERE strategy_id = @StrategyID", connection))
+                {
+                    command.Parameters.AddWithValue("@UserIds", updatedUserIds);
+                    command.Parameters.AddWithValue("@StrategyID", strategyID);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+            return true;
+        }
+
     }
 }

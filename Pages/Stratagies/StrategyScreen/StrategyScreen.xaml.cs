@@ -67,6 +67,12 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
             SetEditingMode(EditingMode.Pen);
         }
 
+        private void ShareStrategyIcon_Click(object sender, RoutedEventArgs e)
+        {
+            var addUserWindow = new AddUser.AddUser(ViewModel.Source.StrategyID);
+            addUserWindow.ShowDialog();
+        }
+
         private void SetEditingMode(EditingMode mode)
         {
             PenBtn.IsChecked = false;
@@ -117,9 +123,9 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
 
         private void ItemCanvas_PreviewMouseMove(object sender, MouseEventArgs e)
         {
-            if (this.dragObject == null) 
+            if (this.dragObject == null)
                 return;
-            
+
             var position = e.GetPosition(sender as IInputElement);
             Canvas.SetTop(this.dragObject, position.Y - this.offset.Y);
             Canvas.SetLeft(this.dragObject, position.X - this.offset.X);
@@ -138,7 +144,7 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
                     strategyItem.YCoordinate = (float)position.Y - (float)this.offset.Y;
                 }
             }
-            
+
             this.dragObject = null;
             this.ItemCanvas.ReleaseMouseCapture();
         }
