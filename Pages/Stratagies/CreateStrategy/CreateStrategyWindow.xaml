@@ -11,6 +11,7 @@
 
     <Window.Resources>
         <converter:EnumToListConverter x:Key="EnumToListConverter" />
+        <converter:EnumToIntConverter x:Key="EnumToIntConverter"/>
     </Window.Resources>
 
     <Grid Margin="20">
@@ -30,7 +31,7 @@
         <TextBox Grid.Row="0" Grid.Column="2" Text="{Binding Source.Name}"/>
 
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Map"/>
-        <ComboBox Grid.Row="1" Grid.Column="2" ItemsSource="{Binding Source={x:Type enums:Map}, Converter={StaticResource EnumToListConverter}}" SelectedValue="{Binding Source.MapID}"/>
+        <ComboBox Name="MapComboBox" Grid.Row="1" Grid.Column="2" ItemsSource="{Binding Source={x:Type enums:Map}, Converter={StaticResource EnumToListConverter}}" SelectedValue="{Binding Source.Map, Mode=TwoWay, Converter={StaticResource EnumToIntConverter}}" SelectionChanged="Map_SelectionChanged"/>
 
         <Button Grid.Row="2" Grid.Column="2" Content="Create" VerticalAlignment="Bottom" Margin="60,0,0,0" Click="Create_Click"/>
     </Grid>

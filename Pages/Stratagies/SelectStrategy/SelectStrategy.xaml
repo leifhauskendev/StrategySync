@@ -18,8 +18,39 @@
         <TextBlock Grid.Row="1" Text="No data." FontSize="15" HorizontalAlignment="Center" Visibility="{Binding NoDataTextVisiblity}"/>
         <TextBlock Grid.Row="1" Text="Loading..." FontSize="15" HorizontalAlignment="Center" Visibility="{Binding LoadingTextVisiblity}"/>
 
-        <ListView Grid.Row="1" Visibility="{Binding StrategyListVisiblity}">
-            
+        <ListView Grid.Row="1" Visibility="{Binding StrategyListVisiblity}" ItemsSource="{Binding Source}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ShowGridLines="False" MouseDown="Strategy_Click">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="150"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="Name: "/>
+                        <TextBlock Grid.Column="2" Text="{Binding Name}"/>
+
+                        <TextBlock Grid.Column="3" Text="Map: "/>
+                        <TextBlock Grid.Column="5" Text="{Binding MapName}"/>
+
+                        <TextBlock Grid.Column="6" Text="Last Opened: "/>
+                        <TextBlock Grid.Column="8" Text="{Binding LastOpened}"/>
+
+                        <TextBlock Grid.Column="9" Text="Checked Out: "/>
+                        <TextBlock Grid.Column="11" Text="{Binding IsCheckedOut}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
     </Grid>
 </Window>

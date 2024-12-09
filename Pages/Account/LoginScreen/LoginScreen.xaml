@@ -23,6 +23,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -32,5 +33,6 @@
         <PasswordBox Grid.Row="3" Grid.Column="1" PasswordChanged="PasswordBox_PasswordChanged" Name="PasswordBox"/>
         <Button Grid.Row="4" Grid.Column="1" Content="Login" Name="LoginButton" Click="LoginButton_Click" Margin="0,5,0,5"/>
         <Button Grid.Row="5" Grid.Column="1" Content="Create Account" Name="CreateAccountButton" Click="CreateAccountButton_Click" Margin="0,5,0,5"/>
+        <Button Grid.Row="6" Grid.Column="1" Content="Forgot Password" Name="ForgotPasswordButton" Click="ForgotPasswordButton_Click" Margin="0,5,0,5"/>
     </Grid>
 </Page>

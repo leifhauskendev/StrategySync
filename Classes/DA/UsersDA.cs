@@ -57,5 +57,46 @@ namespace StrategySync.Classes.DA
 
             return userInfo;
         }
+
+        public static void UpdatePassword(User user)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                using (MySqlCommand command = new MySqlCommand("UPDATE users SET password = @password, aes_key = @aesKey, aes_iv = @aesIV WHERE username = @username", connection))
+                {
+                    command.Parameters.AddWithValue("@username", user.Username);
+                    command.Parameters.AddWithValue("@password", user.EncryptedPassword);
+                    command.Parameters.AddWithValue("@aesKey", user.AESKey);
+                    command.Parameters.AddWithValue("@aesIV", user.AESIV);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+
+        public static string GetUsernameByEmail(string email)
+        {
+            string username = null;
+            string query = "SELECT username FROM users WHERE email=@Email";
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open(); 
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Email", email);
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            username = reader.GetString("username");
+                        }
+                    }
+                }
+            }
+            return username;
+        }
     }
 }
