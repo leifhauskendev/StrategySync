@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Media;
 using StrategySync.BL;
 using System.Windows.Ink;
+using System.Collections.ObjectModel;
 
 namespace StrategySync
 {
@@ -22,6 +23,8 @@ namespace StrategySync
 
         private string _user;
         private Strategy _source;
+        private StrategyItem _selectedItem;
+        private ObservableCollection<StrategyItem> _deletedItems = new ObservableCollection<StrategyItem>();
 
 
         public string User
@@ -32,7 +35,7 @@ namespace StrategySync
                 if (_user != value)
                 {
                     _user = value;
-                    OnPropertyChanged(nameof(_user));
+                    OnPropertyChanged(nameof(User));
                 }
             }
         }
@@ -45,7 +48,33 @@ namespace StrategySync
                 if (_source != value)
                 {
                     _source = value;
-                    OnPropertyChanged(nameof(_source));
+                    OnPropertyChanged(nameof(Source));
+                }
+            }
+        }
+
+        public StrategyItem SelectedItem
+        {
+            get { return _selectedItem; }
+            set
+            {
+                if (_selectedItem != value)
+                {
+                    _selectedItem = value;
+                    OnPropertyChanged(nameof(SelectedItem));
+                }
+            }
+        }
+
+        public ObservableCollection<StrategyItem> DeletedItems
+        {
+            get { return _deletedItems; }
+            set
+            {
+                if (_deletedItems != value)
+                {
+                    _deletedItems = value;
+                    OnPropertyChanged(nameof(DeletedItems));
                 }
             }
         }
@@ -64,7 +93,7 @@ namespace StrategySync
             } 
             else
             {
-                var result = StrategyBL.SaveExistingStrategy(Source);
+                var result = StrategyBL.SaveExistingStrategy(Source, DeletedItems);
                 if (result)
                 {
                     return true;

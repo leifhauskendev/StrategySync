@@ -37,22 +37,33 @@
                 <StackPanel Grid.Row="0" Height="540">
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="0.75*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Text="Map" HorizontalAlignment="Center" Grid.Row="0" FontSize="20" Padding="20"/>
-                        <!--text box for strat description here-->
+                        <TextBlock Text="Strategy Info" HorizontalAlignment="Center" Grid.Row="0" FontSize="20" Padding="20"/>
+                        <TextBlock Text="Name" Grid.Row="1" HorizontalAlignment="Left" Margin="10"/>
+                        <TextBox x:Name="NameTextBox" Text="{Binding Source.Name,  UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" HorizontalAlignment="Left" Margin="10" Width="400"/>
+
+                        <TextBlock Text="Description" Grid.Row="3" HorizontalAlignment="Left" Margin="10"/>
+                        <TextBox x:Name="DescriptionTextBox" Text="{Binding Source.Description,  UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" HorizontalAlignment="Left" Margin="10" Width="400" Height="350"/>
                     </Grid>
                 </StackPanel>
                 <StackPanel Grid.Row="1" Height="540">
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="0.33*"/>
-                            <RowDefinition Height="0.33*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="100"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Text="Lineup" HorizontalAlignment="Center" Grid.Row="0" FontSize="20" Padding="20"/>
-                        <!--lineup image if applicable and description here-->
+                        <TextBlock Text="Selected Item" HorizontalAlignment="Center" Grid.Row="0" FontSize="20" Margin="20"/>
+                        <TextBlock x:Name="ItemDescriptionLabel" Text="Description" HorizontalAlignment="Left" Grid.Row="1" Padding="10" Visibility="Hidden"/>
+                        <TextBox x:Name="ItemDescription" TextChanged="ItemDescription_TextChanged" Grid.Row="2" HorizontalAlignment="Left" Margin="10" Width="400" Height="200" Visibility="Hidden" Text="{Binding SelectedItem.Description, Mode=TwoWay}" AcceptsReturn="True" TextWrapping="Wrap"/>
+                        <TextBlock x:Name="NoneSelected" Text="No item selected." Grid.Row="2" HorizontalAlignment="Center" Margin="10"/>
+                        <Button x:Name="DeleteButton" Grid.Row="3" Content="Delete" FontSize="15" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="DeleteButton_Click" Padding="10" Visibility="Hidden"/>
                     </Grid>
                 </StackPanel>
             </StackPanel>

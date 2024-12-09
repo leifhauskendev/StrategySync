@@ -114,5 +114,20 @@ namespace StrategySync.Classes.DA
                 }
             }
         }
+
+        public static void DeleteRecordById(int id)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                using (MySqlCommand command = new MySqlCommand(
+                    "DELETE FROM strategies_item WHERE item_id = @ItemId", connection))
+                {
+                    command.Parameters.AddWithValue("@ItemId", id);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
     }
 }

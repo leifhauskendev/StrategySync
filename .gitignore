@@ -1,24 +1,32 @@
-# Exclude Visual Studio temporary files and folders
-.vs/
-# Exclude build output folders
-bin/
-obj/
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
 
-# Exclude user-specific files
-*.suo
-*.user
-*.userosscache
-*.sln.docstates
-
-# Exclude generated debug and release files
-*.exe
-*.pdb
-*.dll
-*.cache
-*.log
-*.ide
-
-# Exclude temporary files
-*.tmp
-*.bak
-*.swp
+/.vs/StrategySync/FileContentIndex/15ea8e07-cc3a-4a92-bc4c-c06100bd384f.vsidx
+/.vs/StrategySync/FileContentIndex/26b20f53-6ea3-4dc1-9a14-0f33c39f5342.vsidx
+/.vs/StrategySync/FileContentIndex/76842bdc-c4b4-46d7-ac8f-ba64102751c7.vsidx
+/.vs/StrategySync/FileContentIndex/7fce3eac-b054-423f-afbe-a3ddfc720954.vsidx
+/.vs/StrategySync/FileContentIndex/cb064581-aa59-4bee-9b5f-b209c5fa5fa4.vsidx
+/.vs/StrategySync/FileContentIndex/49b5e91e-ffd6-4d37-9084-0bdd8165e768.vsidx
+/.vs/StrategySync/FileContentIndex/ad2b7316-524a-451b-a116-3149d68970d0.vsidx
+/.vs/StrategySync/FileContentIndex/c1a21a10-9648-45c5-ac5d-f4c2dfdab320.vsidx
+/.vs/StrategySync/FileContentIndex/cedbccb2-d6f0-4826-a691-b3a28abbabfb.vsidx
+/.vs/StrategySync/v17/.suo
+/.vs/StrategySync/v17/DocumentLayout.backup.json
+/.vs/StrategySync/v17/DocumentLayout.json
+/bin/Debug/StrategySync.exe
+/bin/Debug/StrategySync.pdb
+/.vs/StrategySync/FileContentIndex/581fb45c-1272-4fd9-a000-b5393f123b0b.vsidx
+/.vs/StrategySync/FileContentIndex/581fb45c-1272-4fd9-a000-b5393f123b0b.vsidx
+/.vs/StrategySync/FileContentIndex/9b393146-756f-43a9-9351-4c662fbdff97.vsidx
+/.vs/StrategySync/FileContentIndex/a9c0cb76-d9ff-4ff2-93ba-628d17defa5c.vsidx
+/.vs/StrategySync/FileContentIndex/e27e7c47-2f60-4141-9ed6-0596e0a325ac.vsidx
+/.vs/StrategySync/FileContentIndex/11f3ec41-08cd-4fb5-b184-a94d16423e80.vsidx
+/.vs/StrategySync/FileContentIndex/9b77096e-597f-42df-9878-9da4b83282a6.vsidx
+/.vs/StrategySync/FileContentIndex/a7db2a91-b096-407e-b67f-acb156a12bce.vsidx
+/.vs/StrategySync/FileContentIndex/d9a2bef1-a73a-45b7-9fb3-76be5a890e8a.vsidx
+/.vs/StrategySync/FileContentIndex/ffb49e1c-c5d3-483b-957f-318772a99f7a.vsidx
+/.vs/StrategySync/FileContentIndex/91efe262-06e2-4471-9e21-f78e0514f39b.vsidx
+/.vs/StrategySync/FileContentIndex/67750870-3c86-4fda-b35a-1c2328cfc60b.vsidx
+/.vs/StrategySync/FileContentIndex/454f6f3d-a3fc-4a8c-901f-2675a8cbeaf6.vsidx
+*.vsidx

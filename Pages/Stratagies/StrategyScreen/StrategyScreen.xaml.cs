@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
@@ -166,6 +167,17 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
             this.offset.Y -= Canvas.GetTop(this.dragObject);
             this.offset.X -= Canvas.GetLeft(this.dragObject);
             this.ItemCanvas.CaptureMouse();
+
+            var image = sender as Image;
+            if (image != null)
+            {
+                SetSelectedItem((StrategyItem)image.Tag);
+                ItemDescription.Visibility = Visibility.Visible;
+                ItemDescriptionLabel.Visibility = Visibility.Visible;
+                NoneSelected.Visibility = Visibility.Hidden;
+                ItemDescription.CaretIndex = ItemDescription.Text.Length;
+                DeleteButton.Visibility = Visibility.Visible;
+            }
         }
 
         private void SetOnscreenItems ()
@@ -283,9 +295,52 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
             }
         }
 
+        private int GetIndexOfStrategyItem ()
+        {
+            return ViewModel.Source.StrategyItems
+                .Select((item, idx) => new { item, idx })
+                .Where(x => x.item.ItemID == ViewModel.SelectedItem.ItemID)
+                .Select(x => x.idx)
+                .FirstOrDefault();
+        }
+
+        private void SetSelectedItem (StrategyItem item)
+        {
+            ViewModel.SelectedItem = item; 
+            ItemDescription.Text = item.Description;
+        }
+
         private void Save_MouseDown(object sender, MouseButtonEventArgs e)
         {
             ViewModel.SaveStrategy(DrawingCanvas);
+        }
+
+        private void ItemDescription_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ViewModel.SelectedItem.Description = ItemDescription.Text;
+
+            ViewModel.Source.StrategyItems[GetIndexOfStrategyItem()] = ViewModel.SelectedItem;
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            int index = GetIndexOfStrategyItem();
+            ViewModel.DeletedItems.Add(ViewModel.Source.StrategyItems[index]);
+            for (int i = 0; i < ItemCanvas.Children.Count; i++)
+            {
+                var child = ItemCanvas.Children[i];
+                if (child is Image image && Equals((image.Tag as StrategyItem).ItemID, ViewModel.Source.StrategyItems[index].ItemID))
+                {
+                    ItemCanvas.Children.RemoveAt(i);
+                    break;
+                }
+            }
+            ViewModel.Source.StrategyItems.RemoveAt(index);
+            ViewModel.SelectedItem = null;
+            ItemDescription.Visibility = Visibility.Hidden;
+            ItemDescriptionLabel.Visibility = Visibility.Hidden;
+            NoneSelected.Visibility = Visibility.Visible;
+            DeleteButton.Visibility = Visibility.Hidden;
         }
     }
 }
