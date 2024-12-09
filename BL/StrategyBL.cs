@@ -2,6 +2,7 @@
 using StrategySync.Classes.Strategy;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,7 +43,7 @@ namespace StrategySync.BL
             return true;
         }
 
-        public static bool SaveExistingStrategy (Strategy strategy)
+        public static bool SaveExistingStrategy (Strategy strategy, ObservableCollection<StrategyItem> deletedItems)
         {
             try
             {
@@ -64,6 +65,11 @@ namespace StrategySync.BL
                     {
                         StrategiesItemDA.EditRecord(item);
                     }
+                }
+
+                foreach (StrategyItem item in deletedItems)
+                {
+                    StrategiesItemDA.DeleteRecordById(item.ItemID);
                 }
             }
             catch (Exception ex)
