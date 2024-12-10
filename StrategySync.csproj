@@ -35,8 +35,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Azure.Communication.Email" Version="1.0.1" />
-    <PackageReference Include="Azure.Core" Version="1.44.1" />
+    <PackageReference Include="Azure.Communication.Email">
+      <Version>1.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Azure.Core">
+      <Version>1.44.1</Version>
+    </PackageReference>
+    <PackageReference Include="System.Net.Http">
+      <Version>4.3.4</Version>
+    </PackageReference>
     <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
       <HintPath>packages\BouncyCastle.Cryptography.2.3.1\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
     </Reference>
