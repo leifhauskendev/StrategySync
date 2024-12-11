@@ -301,5 +301,8 @@
   <ItemGroup>
     <Resource Include="Media\Icons\share.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Media\Icons\arrow-left.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
