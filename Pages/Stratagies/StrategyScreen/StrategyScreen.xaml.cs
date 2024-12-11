@@ -1,4 +1,5 @@
-﻿using StrategySync.Classes.Strategy;
+﻿using Google.Protobuf.WellKnownTypes;
+using StrategySync.Classes.Strategy;
 using StrategySync.Enumerations.StrategyEnums;
 using StrategySync.Pages.Account.CreateAccount;
 using System;
@@ -55,6 +56,7 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
                 ViewModel.Source.StrategyItems = new ObservableCollection<StrategyItem>();
             }
             SetOnscreenItems();
+            SetCheckInOutVisibilities(app.User);
         }
 
         private void EraserBtn_Click(object sender, RoutedEventArgs e)
@@ -233,7 +235,7 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
             {
                 foreach (StrategyItem item in ViewModel.Source.StrategyItems)
                 {
-                    SetItemVisuals(item, Enum.GetName(typeof(ItemType), item.ItemType), item.XCoordinate, item.YCoordinate);
+                    SetItemVisuals(item, System.Enum.GetName(typeof(ItemType), item.ItemType), item.XCoordinate, item.YCoordinate);
                 }
 
                 SetInkCanvasFromByteArray(ViewModel.Source.Drawing);
@@ -288,6 +290,22 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
             ItemCanvas.Children.Add(item.Image);
         }
 
+        private void SetCheckInOutVisibilities(string user)
+        {
+            if (ViewModel.Source.IsCheckedOut)
+            {
+                if (ViewModel.Source.CheckedOutTo == user)
+                {
+                    CheckInOutButton.Content = "Check In";
+                    Save.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    CheckInOutButton.Visibility = Visibility.Hidden;
+                }
+            }
+        }
+
         private void SetInkCanvasFromByteArray(byte[] strokeData)
         {
             if (strokeData == null || strokeData.Length == 0)
@@ -318,7 +336,7 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
 
         private void Save_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            ViewModel.SaveStrategy(DrawingCanvas);
+            ViewModel.SaveStrategy(DrawingCanvas, false);
         }
 
         private void ItemDescription_TextChanged(object sender, TextChangedEventArgs e)
@@ -347,6 +365,38 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
             ItemDescriptionLabel.Visibility = Visibility.Hidden;
             NoneSelected.Visibility = Visibility.Visible;
             DeleteButton.Visibility = Visibility.Hidden;
+        }
+
+        private void CheckInOutButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ViewModel.Source.IsCheckedOut)
+            {
+                MessageBoxResult result = MessageBox.Show(
+                "Would you like to save any unsaved changes when you check in?", 
+                "Warning",            
+                MessageBoxButton.YesNo,   
+                MessageBoxImage.Question  
+                );
+
+                ViewModel.Source.IsCheckedOut = false;
+                CheckInOutButton.Content = "Check Out";
+                if (result == MessageBoxResult.Yes)
+                {
+                    ViewModel.SaveStrategy(DrawingCanvas, true);
+                }
+                else
+                {
+                    ViewModel.UpdateCheckedOut();
+                }
+                Save.Visibility = Visibility.Hidden;
+            } 
+            else
+            {
+                ViewModel.Source.IsCheckedOut = true;
+                ViewModel.UpdateCheckedOut();
+                CheckInOutButton.Content = "Check In";
+                Save.Visibility = Visibility.Visible;
+            }
         }
     }
 }

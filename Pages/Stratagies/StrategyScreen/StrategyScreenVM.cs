@@ -12,6 +12,8 @@ using System.Windows.Media;
 using StrategySync.BL;
 using System.Windows.Ink;
 using System.Collections.ObjectModel;
+using StrategySync.Classes.DA;
+using System.Windows;
 
 namespace StrategySync
 {
@@ -79,8 +81,13 @@ namespace StrategySync
             }
         }
 
-        public bool SaveStrategy(InkCanvas inkCanvas) 
-        { 
+        public bool SaveStrategy(InkCanvas inkCanvas, bool isBeingSavedWithCheckIn) 
+        {
+            if (isBeingSavedWithCheckIn)
+            {
+                Source.CheckedOutTo = string.Empty;
+            }
+
             Source.Drawing = ConvertInkCanvasToByteArray(inkCanvas);
             if (Source.IsNew)
             {
@@ -101,6 +108,20 @@ namespace StrategySync
             }
 
             return false; 
+        }
+
+        public void UpdateCheckedOut()
+        {
+            if (Source.IsCheckedOut)
+            {
+                Source.CheckedOutTo = (Application.Current as App).User;
+            }
+            else
+            {
+                Source.CheckedOutTo = string.Empty;
+            }
+
+            StrategiesDA.UpdateCheckedOut(Source.IsCheckedOut, Source.CheckedOutTo, Source.StrategyID);
         }
 
         public byte[] ConvertInkCanvasToByteArray(InkCanvas inkCanvas)
