@@ -16,17 +16,22 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="40"/>
                 <ColumnDefinition Width="1"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="1"/>
                 <ColumnDefinition Width="80"/>
                 <ColumnDefinition Width="1"/>
                 <ColumnDefinition Width="40"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" Width="32" Height="32" Click="ShareStrategyIcon_Click" ToolTip="Share Strategy" Background="Transparent" BorderBrush="Transparent">
+            <Button Grid.Column="0" Width="40" Height="40" Click="BackButton_Click" ToolTip="Share Strategy" Background="Transparent" BorderBrush="Transparent">
+                <Image Source="/Media/Icons/arrow-left.png" Stretch="Uniform"/>
+            </Button>
+            <Button Grid.Column="2" Width="40" Height="40" Click="ShareStrategyIcon_Click" ToolTip="Share Strategy" Background="Transparent" BorderBrush="Transparent">
                 <Image Source="/Media/Icons/share.png" Stretch="Uniform"/>
             </Button>
-            <Button x:Name="CheckInOutButton" Grid.Column="2" Content="Check Out" Margin="10" Click="CheckInOutButton_Click"/>
-            <Image x:Name="Save" Grid.Column="4" Source="https://static.thenounproject.com/png/2371021-200.png" Width="40" Height="40" HorizontalAlignment="Left" Margin="5" MouseDown="Save_MouseDown" Visibility="Hidden"/>
+            <Button x:Name="CheckInOutButton" Grid.Column="4" Content="Check Out" Margin="10" Click="CheckInOutButton_Click"/>
+            <Image x:Name="Save" Grid.Column="6" Source="https://static.thenounproject.com/png/2371021-200.png" Width="40" Height="40" HorizontalAlignment="Left" Margin="5" MouseDown="Save_MouseDown" Visibility="Hidden"/>
 
 
         </Grid>

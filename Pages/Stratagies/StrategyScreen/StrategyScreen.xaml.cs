@@ -68,6 +68,14 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
             addUserWindow.ShowDialog();
         }
 
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            var selectStrategyWindow = new SelectStrategy();
+            selectStrategyWindow.ShowDialog();
+            SetStrategy();
+        }
+
         private void SetEditingMode(EditingMode mode)
         {
             PenBtn.IsChecked = false;
