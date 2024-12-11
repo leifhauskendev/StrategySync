@@ -293,6 +293,10 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
 
         private void SetCheckInOutVisibilities(string user)
         {
+            // Ensuring the check in/out buttons work as intented every time a new strat is opened
+            Save.Visibility = Visibility.Hidden;
+            CheckInOutButton.Content = "Check Out";
+
             if (ViewModel.Source.IsCheckedOut)
             {
                 if (ViewModel.Source.CheckedOutTo == user)
