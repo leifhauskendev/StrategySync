@@ -20,6 +20,7 @@ namespace StrategySync.Classes.Strategy
         private string _userIDs;
         private byte[] _drawing;
         private ObservableCollection<StrategyItem> _strategyItems;
+        private string _checkedOutTo;
 
         public int StrategyID
         {
@@ -135,6 +136,19 @@ namespace StrategySync.Classes.Strategy
                 {
                     _strategyItems = value;
                     OnPropertyChanged(nameof(StrategyItems));
+                }
+            }
+        }
+
+        public string CheckedOutTo
+        {
+            get { return _checkedOutTo; }
+            set
+            {
+                if (_checkedOutTo != value)
+                {
+                    _checkedOutTo = value;
+                    OnPropertyChanged(nameof(CheckedOutTo));
                 }
             }
         }

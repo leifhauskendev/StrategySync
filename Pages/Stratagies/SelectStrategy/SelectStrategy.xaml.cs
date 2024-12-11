@@ -44,20 +44,13 @@ namespace StrategySync.Pages.Stratagies
         {
             var grid = sender as Grid;
             var strategy = grid.DataContext as StrategyListItem;
-            if (!strategy.IsCheckedOut)
+            if (ViewModel.GetSelectedStrategyById(strategy.StrategyID))
             {
-                if (ViewModel.GetSelectedStrategyById(strategy.StrategyID))
-                {
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Unable to retrieve strategy.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                this.Close();
             }
-            else 
+            else
             {
-                MessageBox.Show("Cannot open a strategy that is checked out", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Unable to retrieve strategy.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

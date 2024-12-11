@@ -19,6 +19,7 @@ namespace StrategySync.BL
             {
                 strategy.UserIds = app.User;
                 strategy.LastOpened = DateTime.Now;
+                strategy.CheckedOutTo = string.Empty;
                 if (strategy.Description == null)
                 {
                     strategy.Description = string.Empty;
