@@ -49,14 +49,7 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
 
             var selectStrategyWindow = new SelectStrategy();
             selectStrategyWindow.ShowDialog();
-            var app = (App)Application.Current;
-            ViewModel.Source = app.CurrentStrategy;
-            if (ViewModel.Source.StrategyItems == null)
-            {
-                ViewModel.Source.StrategyItems = new ObservableCollection<StrategyItem>();
-            }
-            SetOnscreenItems();
-            SetCheckInOutVisibilities(app.User);
+            SetStrategy();
         }
 
         private void EraserBtn_Click(object sender, RoutedEventArgs e)
@@ -397,6 +390,18 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
                 CheckInOutButton.Content = "Check In";
                 Save.Visibility = Visibility.Visible;
             }
+        }
+
+        private void SetStrategy()
+        {
+            var app = (App)Application.Current;
+            ViewModel.Source = app.CurrentStrategy;
+            if (ViewModel.Source.StrategyItems == null)
+            {
+                ViewModel.Source.StrategyItems = new ObservableCollection<StrategyItem>();
+            }
+            SetOnscreenItems();
+            SetCheckInOutVisibilities(app.User);
         }
     }
 }
