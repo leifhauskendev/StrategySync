@@ -163,3 +163,5 @@ C:\Users\andyb\Source\Repos\StrategySync\obj\Debug\StrategySync.csproj.CoreCompi
 C:\Users\andyb\Source\Repos\StrategySync\obj\Debug\Strategy.14E432E3.Up2Date
 C:\Users\andyb\Source\Repos\StrategySync\obj\Debug\StrategySync.exe
 C:\Users\andyb\Source\Repos\StrategySync\obj\Debug\StrategySync.pdb
+C:\Users\andyb\Source\Repos\StrategySync\obj\Debug\Pages\Stratagies\LogOut\LogOut.g.cs
+C:\Users\andyb\Source\Repos\StrategySync\obj\Debug\Pages\Stratagies\LogOut\LogOut.baml
