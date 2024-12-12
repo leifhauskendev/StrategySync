@@ -76,6 +76,12 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
             SetStrategy();
         }
 
+        private void ExitButton_Click(Object sender, RoutedEventArgs e)
+        {
+            var logOut = new LogOut.LogOut();
+            logOut.ShowDialog();
+        }
+
         private void SetEditingMode(EditingMode mode)
         {
             PenBtn.IsChecked = false;
