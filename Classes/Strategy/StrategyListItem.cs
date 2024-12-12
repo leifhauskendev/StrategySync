@@ -1,6 +1,7 @@
 ﻿using StrategySync.Enumerations.StrategyEnums;
 using System;
 using System.ComponentModel;
+using System.Windows;
 
 namespace StrategySync.Classes.Strategy
 {
@@ -12,6 +13,7 @@ namespace StrategySync.Classes.Strategy
         private string _description;
         private DateTime _lastOpened;
         private bool _isCheckedOut;
+        private Visibility _isOwner;
 
         public int StrategyID
         {
@@ -88,6 +90,19 @@ namespace StrategySync.Classes.Strategy
                 {
                     _isCheckedOut = value;
                     OnPropertyChanged(nameof(IsCheckedOut));
+                }
+            }
+        }
+
+        public Visibility IsOwner
+        {
+            get { return _isOwner; }
+            set
+            {
+                if (_isOwner != value)
+                {
+                    _isOwner = value;
+                    OnPropertyChanged(nameof(IsOwner));
                 }
             }
         }

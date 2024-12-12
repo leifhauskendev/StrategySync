@@ -116,6 +116,25 @@ namespace StrategySync.Pages.Stratagies
             return false;
         }
 
+        public bool DeleteStrategyById (int id)
+        {
+            bool result = StrategiesDA.DeleteRecord(id);
+
+            if (result)
+            {
+                var strategyToRemove = Source.FirstOrDefault(s => s.StrategyID == id);
+
+                if (strategyToRemove != null)
+                {
+                    Source.Remove(strategyToRemove);
+                }
+
+                return true;
+            }
+
+            return false;
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged(string propertyName)

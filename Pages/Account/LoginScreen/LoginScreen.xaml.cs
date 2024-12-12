@@ -22,7 +22,11 @@ namespace StrategySync.Pages.Account
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            if (ViewModel.ValidateLoginInfo())
+            if (string.IsNullOrEmpty(ViewModel.Source.Username) || string.IsNullOrEmpty(ViewModel.Source.PasswordString))
+            {
+                MessageBox.Show("Please provide a username AND password");
+            }
+            else if (ViewModel.ValidateLoginInfo())
             {
                 NavigationService.Navigate(new StrategyScreen());
             } else {

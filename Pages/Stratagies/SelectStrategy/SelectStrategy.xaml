@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StrategySync.Pages.Stratagies"
         mc:Ignorable="d"
-        Title="Select Strategy" Height="450" Width="800">
+        Title="Select Strategy" Height="600" Width="1000">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -18,7 +18,7 @@
         <TextBlock Grid.Row="1" Text="No data." FontSize="15" HorizontalAlignment="Center" Visibility="{Binding NoDataTextVisiblity}"/>
         <TextBlock Grid.Row="1" Text="Loading..." FontSize="15" HorizontalAlignment="Center" Visibility="{Binding LoadingTextVisiblity}"/>
 
-        <ListView Grid.Row="1" Visibility="{Binding StrategyListVisiblity}" ItemsSource="{Binding Source}">
+        <ListView x:Name="StrategyListView" Grid.Row="1" Visibility="{Binding StrategyListVisiblity}" ItemsSource="{Binding Source}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid ShowGridLines="False" MouseDown="Strategy_Click">
@@ -35,6 +35,8 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="5"/>
                             <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
 
                         <TextBlock Grid.Column="0" Text="Name: "/>
@@ -48,6 +50,10 @@
 
                         <TextBlock Grid.Column="9" Text="Checked Out: "/>
                         <TextBlock Grid.Column="11" Text="{Binding IsCheckedOut}"/>
+
+                        <Button x:Name="DeleteButton" Grid.Column="13" Width="15" Height="15" Click="DeleteButton_Click" ToolTip="Delete this strategy" Background="Transparent" BorderBrush="Transparent" Visibility="{Binding IsOwner}">
+                            <Image Source="/Media/Icons/TrashbinIcon.png" Stretch="Uniform"/>
+                        </Button>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

@@ -3,6 +3,7 @@ using StrategySync.Classes.Strategy;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 
 namespace StrategySync.Classes.DA
 {
@@ -127,7 +128,11 @@ namespace StrategySync.Classes.DA
                                 Name = reader.GetString("strategy_name"),
                                 Description = reader.GetString("description"),
                                 LastOpened = reader.GetDateTime("last_opened"),
-                                IsCheckedOut = reader.GetBoolean("is_checked")
+                                IsCheckedOut = reader.GetBoolean("is_checked"),
+                                IsOwner = !(reader.GetString("user_ids").IndexOf(',') == -1) &&
+                                            (Application.Current as App).User == reader.GetString("user_ids").Substring(0, reader.GetString("user_ids").IndexOf(',')) ||
+                                            reader.GetString("user_ids").IndexOf(',') == -1
+                                            ? Visibility.Visible : Visibility.Collapsed
                             });
                         }
                     }
@@ -174,5 +179,27 @@ namespace StrategySync.Classes.DA
             return true;
         }
 
+        public static bool DeleteRecord(int strategyID)
+        {
+            bool isDeleted = false;
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                using (MySqlCommand command = new MySqlCommand("DELETE FROM strategies WHERE strategy_id = @StrategyID", connection))
+                {
+                    command.Parameters.AddWithValue("@StrategyID", strategyID);
+
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        isDeleted = true;
+                    }
+                }
+            }
+
+            return isDeleted;
+        }
     }
 }
