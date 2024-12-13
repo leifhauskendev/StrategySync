@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using StrategySync.BL;
 using StrategySync.Classes.Strategy;
 using System;
 using System.Collections.ObjectModel;
@@ -29,7 +30,11 @@ namespace StrategySync.Classes.DA
                     command.Parameters.AddWithValue("@UserIds", strategy.UserIds);
                     command.Parameters.AddWithValue("@Drawing", strategy.Drawing);
 
-                    return Convert.ToInt32(command.ExecuteScalar());
+                    var returnedId = Convert.ToInt32(command.ExecuteScalar());
+
+                    LoggingDA.WriteLog("Create", "CreateStrategy", (Application.Current as App).User, returnedId);
+
+                    return Convert.ToInt32(returnedId);
                 }
             }
         }
@@ -65,6 +70,8 @@ namespace StrategySync.Classes.DA
                 }
             }
 
+            LoggingDA.WriteLog("Read", "ReadStrategy", (Application.Current as App).User, strategyID);
+
             return strategyInfo;
         }
 
@@ -89,6 +96,8 @@ namespace StrategySync.Classes.DA
                     command.ExecuteNonQuery();
                 }
             }
+
+            LoggingDA.WriteLog("Update", "UpdateStrategy", (Application.Current as App).User, strategy.StrategyID);
         }
 
         public static void UpdateCheckedOut(bool isCheckedOut, string checkedOutTo, int id)
@@ -106,6 +115,8 @@ namespace StrategySync.Classes.DA
                     command.ExecuteNonQuery();
                 }
             }
+
+            LoggingDA.WriteLog("Update", "UpdateCheckedOut", (Application.Current as App).User, id);
         }
 
         public static ObservableCollection<StrategyListItem> GetStrategyListItemsByUser(string user)
@@ -138,6 +149,8 @@ namespace StrategySync.Classes.DA
                     }
                 }
             }
+
+            LoggingDA.WriteLog("Read", "GetStrategyListItems", (Application.Current as App).User, -1);
 
             return strategyList;
         }
@@ -176,6 +189,9 @@ namespace StrategySync.Classes.DA
                     command.ExecuteNonQuery();
                 }
             }
+
+            LoggingDA.WriteLog("Update", "ShareStrategy", (Application.Current as App).User, strategyID);
+
             return true;
         }
 
@@ -198,6 +214,8 @@ namespace StrategySync.Classes.DA
                     }
                 }
             }
+
+            LoggingDA.WriteLog("Delete", "DeleteStrategy", (Application.Current as App).User, strategyID);
 
             return isDeleted;
         }
