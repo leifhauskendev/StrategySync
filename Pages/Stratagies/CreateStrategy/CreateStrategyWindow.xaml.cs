@@ -31,6 +31,8 @@ namespace StrategySync.Pages.Stratagies
         {
             var app = (App)Application.Current;
             ViewModel.Source.IsNew = true;
+            ViewModel.Source.IsCheckedOut = true;
+            ViewModel.Source.CheckedOutTo = app.User;
             app.CurrentStrategy = ViewModel.Source;
             this.Close();
         }

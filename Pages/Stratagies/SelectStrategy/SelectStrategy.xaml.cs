@@ -53,5 +53,24 @@ namespace StrategySync.Pages.Stratagies
                 MessageBox.Show("Unable to retrieve strategy.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show(
+                "Are you sure you want to delete this strategy?",
+                "Warning",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question
+                );
+
+            bool deleteResult;
+            if (result == MessageBoxResult.Yes)
+            {
+                deleteResult = ViewModel.DeleteStrategyById(((sender as Button).DataContext as StrategyListItem).StrategyID);
+
+                StrategyListView.ItemsSource = null;
+                StrategyListView.ItemsSource = ViewModel.Source;
+            }
+        }
     }
 }
