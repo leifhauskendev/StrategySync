@@ -196,6 +196,7 @@
     <Compile Include="BL\StrategyBL.cs" />
     <Compile Include="Classes\Converters\EnumToIntConverter.cs" />
     <Compile Include="Classes\Converters\EnumToListConverter.cs" />
+    <Compile Include="Classes\DA\LoggingDA.cs" />
     <Compile Include="Classes\DA\StrategiesDA.cs" />
     <Compile Include="Classes\DA\StrategiesItemDA.cs" />
     <Compile Include="Classes\DA\UsersDA.cs" />
@@ -312,5 +313,6 @@
   <ItemGroup>
     <Resource Include="Media\Icons\arrow-left.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
