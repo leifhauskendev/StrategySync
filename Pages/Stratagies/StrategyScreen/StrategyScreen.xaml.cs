@@ -21,6 +21,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 namespace StrategySync.Pages.Stratagies.StrategyScreen
 {
@@ -80,6 +81,69 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
         {
             var logOut = new LogOut.LogOut();
             logOut.ShowDialog();
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ItemLinkEditor.Visibility == Visibility.Collapsed)
+            {
+                ItemLinkEditor.Visibility = Visibility.Visible;
+                ItemLinkLabel.Visibility = Visibility.Visible;
+                HyperLinkText.Visibility = Visibility.Hidden;
+                EditButton.Content = "Save Link";
+            }
+            else
+            {
+                string updatedLink = ItemLinkEditor.Text;
+
+                ViewModel.UploadLink(updatedLink);
+
+                ItemLinkEditor.Visibility = Visibility.Hidden;
+                ItemLinkLabel.Visibility = Visibility.Hidden;
+                HyperLinkText.Visibility = Visibility.Visible;
+                EditButton.Content = "Edit Link";
+            }
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = e.Uri.AbsoluteUri,
+                UseShellExecute = true
+            });
+            e.Handled = true;
+        }
+        private void SelectedImage_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (sender is Image image && ImagePopup != null)
+            {
+                PopupImage.Source = image.Source;
+                ImagePopup.IsOpen = true;         
+            }
+        }
+
+        private void SelectedImage_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (ImagePopup != null)
+            {
+                ImagePopup.IsOpen = false;
+            }
+        }
+
+        private void SelectedImage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (ImagePopup != null)
+            {
+                ImagePopup.IsOpen = !ImagePopup.IsOpen;
+            }
+        }
+
+        private void UploadPicture_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.UploadPicture();
+            SelectedImage.Source = null;
+            SelectedImage.Source = ViewModel.ByteArrayToImage(ViewModel.SelectedItem.MediaImage);
         }
 
         private void SetEditingMode(EditingMode mode)
@@ -192,6 +256,34 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
                 NoneSelected.Visibility = Visibility.Hidden;
                 ItemDescription.CaretIndex = ItemDescription.Text.Length;
                 DeleteButton.Visibility = Visibility.Visible;
+                EditButton.Visibility = Visibility.Visible;
+                UploadPicture.Visibility = Visibility.Visible;
+                SelectedImage.Visibility = Visibility.Visible;
+
+                if (!string.IsNullOrWhiteSpace(ViewModel?.SelectedItem?.Link) && Uri.TryCreate(ViewModel.SelectedItem.Link, UriKind.Absolute, out _))
+                {
+                    ItemLinkLabel.Visibility = Visibility.Hidden;
+                    HyperLinkText.Visibility = Visibility.Visible;
+                    ItemLinkEditor.Visibility = Visibility.Hidden;
+                    EditButton.Content = "Edit Link";
+                }
+                else
+                {
+                    ItemLinkLabel.Visibility = Visibility.Visible;
+                    HyperLinkText.Visibility = Visibility.Hidden;
+                    ItemLinkEditor.Visibility = Visibility.Visible;
+                    EditButton.Content = "Save Link";
+                }
+
+                if (ViewModel.SelectedItem.MediaImage != null)
+                {
+                    SelectedImage.Source = null;
+                    SelectedImage.Source = ViewModel.ByteArrayToImage(ViewModel.SelectedItem.MediaImage);
+                }
+                else
+                {
+                    SelectedImage.Source = null;
+                }
             }
         }
 
@@ -376,6 +468,12 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
             ItemDescriptionLabel.Visibility = Visibility.Hidden;
             NoneSelected.Visibility = Visibility.Visible;
             DeleteButton.Visibility = Visibility.Hidden;
+            ItemLinkEditor.Visibility = Visibility.Hidden;
+            HyperLinkText.Visibility = Visibility.Hidden;
+            EditButton.Visibility = Visibility.Hidden;
+            ItemLinkLabel.Visibility = Visibility.Hidden;
+            UploadPicture.Visibility = Visibility.Hidden;
+            SelectedImage.Visibility = Visibility.Hidden;
         }
 
         private void CheckInOutButton_Click(object sender, RoutedEventArgs e)

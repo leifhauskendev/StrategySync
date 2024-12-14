@@ -18,7 +18,7 @@ namespace StrategySync.Classes.DA
             {
                 connection.Open();
                 using (MySqlCommand command = new MySqlCommand(
-                    "INSERT INTO strategies_item(strategy_id, role_id, grenade_id, description, x_coordinate, y_coordinate) VALUES(@StrategyId, @RoleId, @GrenadeId, @Description, @XCoordinate, @YCoordinate); SELECT LAST_INSERT_ID();", connection))
+                    "INSERT INTO strategies_item(strategy_id, role_id, grenade_id, description, x_coordinate, y_coordinate, link, mediaImage) VALUES(@StrategyId, @RoleId, @GrenadeId, @Description, @XCoordinate, @YCoordinate, @Link, @MediaImage); SELECT LAST_INSERT_ID();", connection))
                 {
                     command.Parameters.AddWithValue("@StrategyId", strategyItem.StrategyID);
                     command.Parameters.AddWithValue("@RoleId", 0);
@@ -26,6 +26,8 @@ namespace StrategySync.Classes.DA
                     command.Parameters.AddWithValue("@Description", strategyItem.Description);
                     command.Parameters.AddWithValue("@XCoordinate", strategyItem.XCoordinate);
                     command.Parameters.AddWithValue("@YCoordinate", strategyItem.YCoordinate);
+                    command.Parameters.AddWithValue("@Link", strategyItem.Link ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@MediaImage", strategyItem.MediaImage ?? (object)DBNull.Value);
 
                     var returnedId = Convert.ToInt32(command.ExecuteScalar());
 
@@ -55,7 +57,9 @@ namespace StrategySync.Classes.DA
                                 ItemType = reader.GetInt32("grenade_id"),
                                 Description = reader.GetString("description"),
                                 XCoordinate = reader.GetFloat("x_coordinate"),
-                                YCoordinate = reader.GetFloat("y_coordinate")
+                                YCoordinate = reader.GetFloat("y_coordinate"),
+                                Link = reader.IsDBNull(reader.GetOrdinal("link")) ? null : reader.GetString("link"),
+                                MediaImage = reader.IsDBNull(reader.GetOrdinal("mediaImage")) ? null : (byte[])reader["mediaImage"]
                             };
                         }
                     }
@@ -88,7 +92,9 @@ namespace StrategySync.Classes.DA
                                 ItemType = reader.GetInt32("grenade_id"),
                                 Description = reader.GetString("description"),
                                 XCoordinate = reader.GetFloat("x_coordinate"),
-                                YCoordinate = reader.GetFloat("y_coordinate")
+                                YCoordinate = reader.GetFloat("y_coordinate"),
+                                Link = reader.IsDBNull(reader.GetOrdinal("link")) ? null : reader.GetString("link"),
+                                MediaImage = reader.IsDBNull(reader.GetOrdinal("mediaImage")) ? null : (byte[])reader["mediaImage"]
                             };
                             strategyItems.Add(strategyItem);
                         }
@@ -108,7 +114,7 @@ namespace StrategySync.Classes.DA
             {
                 connection.Open();
                 using (MySqlCommand command = new MySqlCommand(
-                    "UPDATE strategies_item SET strategy_id = @StrategyId, role_id = @RoleId, grenade_id = @GrenadeId, description = @Description, x_coordinate = @XCoordinate, y_coordinate = @YCoordinate WHERE item_id = @ItemID", connection))
+                    "UPDATE strategies_item SET strategy_id = @StrategyId, role_id = @RoleId, grenade_id = @GrenadeId, description = @Description, x_coordinate = @XCoordinate, y_coordinate = @YCoordinate, link = @Link, mediaImage = @MediaImage WHERE item_id = @ItemID", connection))
                 {
                     command.Parameters.AddWithValue("@StrategyId", strategyItem.StrategyID);
                     command.Parameters.AddWithValue("@RoleId", 0);
@@ -116,6 +122,8 @@ namespace StrategySync.Classes.DA
                     command.Parameters.AddWithValue("@Description", strategyItem.Description);
                     command.Parameters.AddWithValue("@XCoordinate", strategyItem.XCoordinate);
                     command.Parameters.AddWithValue("@YCoordinate", strategyItem.YCoordinate);
+                    command.Parameters.AddWithValue("@Link", strategyItem.Link ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@MediaImage", strategyItem.MediaImage ?? (object)DBNull.Value);
                     command.Parameters.AddWithValue("@ItemID", strategyItem.ItemID);
 
                     command.ExecuteNonQuery();

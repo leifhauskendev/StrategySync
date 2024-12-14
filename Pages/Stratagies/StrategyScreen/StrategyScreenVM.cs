@@ -14,6 +14,7 @@ using System.Windows.Ink;
 using System.Collections.ObjectModel;
 using StrategySync.Classes.DA;
 using System.Windows;
+using Microsoft.Win32;
 
 namespace StrategySync
 {
@@ -27,6 +28,8 @@ namespace StrategySync
         private Strategy _source;
         private StrategyItem _selectedItem;
         private ObservableCollection<StrategyItem> _deletedItems = new ObservableCollection<StrategyItem>();
+        private byte[] imageBytes;
+        private BitmapImage _selectedImageSource;
 
 
         public string User
@@ -77,6 +80,18 @@ namespace StrategySync
                 {
                     _deletedItems = value;
                     OnPropertyChanged(nameof(DeletedItems));
+                }
+            }
+        }
+        public BitmapImage SelectedImageSource
+        {
+            get { return _selectedImageSource; }
+            set
+            {
+                if (_selectedImageSource != value)
+                {
+                    _selectedImageSource = value;
+                    OnPropertyChanged(nameof(SelectedImageSource));
                 }
             }
         }
@@ -138,6 +153,82 @@ namespace StrategySync
                 return memoryStream.ToArray();
             }
         }
+
+        public void UploadPicture()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "Image Files (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png"
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(openFileDialog.FileName);
+                bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                bitmap.EndInit();
+                SelectedImageSource = bitmap; 
+
+                byte[] imageBytes = File.ReadAllBytes(openFileDialog.FileName);
+
+                if (SelectedItem != null)
+                {
+                    SelectedItem.MediaImage = imageBytes;
+
+                    var updatedItem = new StrategyItem
+                    {
+                        ItemID = SelectedItem.ItemID,
+                        StrategyID = SelectedItem.StrategyID,
+                        ItemType = SelectedItem.ItemType,
+                        Description = SelectedItem.Description,
+                        XCoordinate = SelectedItem.XCoordinate,
+                        YCoordinate = SelectedItem.YCoordinate,
+                        Link = SelectedItem.Link,
+                        MediaImage = imageBytes
+                    };
+
+                    StrategiesItemDA.EditRecord(updatedItem);
+                }
+            }
+        }
+
+        public void UploadLink(string updatedLink)
+        {
+            var updatedItem = new StrategyItem
+            {
+                ItemID = SelectedItem.ItemID, 
+                StrategyID = SelectedItem.StrategyID,
+                ItemType = SelectedItem.ItemType,
+                Description = SelectedItem.Description,
+                XCoordinate = SelectedItem.XCoordinate,
+                YCoordinate = SelectedItem.YCoordinate,
+                Link = updatedLink, 
+                MediaImage = SelectedItem.MediaImage
+            };
+
+            StrategiesItemDA.EditRecord(updatedItem);
+
+            SelectedItem.Link = updatedLink;
+        }
+
+        public BitmapImage ByteArrayToImage(byte[] byteArray)
+        {
+            if (byteArray == null || byteArray.Length == 0)
+                return null;
+
+            using (var stream = new MemoryStream(byteArray))
+            {
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                bitmap.StreamSource = stream;
+                bitmap.EndInit();
+                bitmap.Freeze(); 
+                return bitmap;
+            }
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
