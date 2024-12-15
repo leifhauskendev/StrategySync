@@ -196,6 +196,7 @@
     <Compile Include="BL\StrategyBL.cs" />
     <Compile Include="Classes\Converters\EnumToIntConverter.cs" />
     <Compile Include="Classes\Converters\EnumToListConverter.cs" />
+    <Compile Include="Classes\DA\LoggingDA.cs" />
     <Compile Include="Classes\DA\StrategiesDA.cs" />
     <Compile Include="Classes\DA\StrategiesItemDA.cs" />
     <Compile Include="Classes\DA\UsersDA.cs" />
@@ -230,6 +231,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Stratagies\LogOut\LogOut.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Stratagies\SelectStrategy\SelectStrategy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -261,6 +266,10 @@
     <Compile Include="Pages\Stratagies\CreateStrategy\CreateStrategyWindow.xaml.cs">
       <DependentUpon>CreateStrategyWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Stratagies\LogOut\LogOut.xaml.cs">
+      <DependentUpon>LogOut.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Stratagies\LogOut\LogOutVM.cs" />
     <Compile Include="Pages\Stratagies\SelectStrategy\SelectStrategy.xaml.cs">
       <DependentUpon>SelectStrategy.xaml</DependentUpon>
     </Compile>
@@ -304,5 +313,6 @@
   <ItemGroup>
     <Resource Include="Media\Icons\arrow-left.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

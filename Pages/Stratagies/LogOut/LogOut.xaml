@@ -1,0 +1,16 @@
+﻿<Window x:Class="StrategySync.Pages.Stratagies.LogOut.LogOut"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StrategySync.Pages.Stratagies.LogOut"
+        mc:Ignorable="d"
+        Title="User Menu" Height="250" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <Button Content="Logout" Width="150" Height="40" Click="Logout_Click"/>
+            <Button Content="Exit Program" Width="150" Height="40" Click="ExitProgram_Click"/>
+            <Button Content="Close Menu" Width="150" Height="40" Click="CloseMenu_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

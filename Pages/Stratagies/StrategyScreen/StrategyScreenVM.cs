@@ -92,9 +92,10 @@ namespace StrategySync
             if (Source.IsNew)
             {
                 var result = StrategyBL.SaveNewStrategy(Source);
-                if (result)
+                if (result != -1)
                 {
                     Source.IsNew = false;
+                    Source.StrategyID = result;
                     return true;
                 }
             } 

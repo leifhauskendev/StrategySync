@@ -28,6 +28,8 @@ namespace StrategySync.Classes.DA
                     command.ExecuteNonQuery();
                 }
             }
+
+            LoggingDA.WriteLog("Create", "CreateUser", user.Username, -1);
         }
 
 
@@ -55,6 +57,8 @@ namespace StrategySync.Classes.DA
                 }
             }
 
+            LoggingDA.WriteLog("Read", "ReadUser", username, -1);
+
             return userInfo;
         }
 
@@ -73,6 +77,8 @@ namespace StrategySync.Classes.DA
                     command.ExecuteNonQuery();
                 }
             }
+
+            LoggingDA.WriteLog("Update", "UpdatePassword", user.Username, -1);
         }
 
 
@@ -96,6 +102,9 @@ namespace StrategySync.Classes.DA
                     }
                 }
             }
+
+            LoggingDA.WriteLog("Read", "GetUsernameByEmail", username, -1);
+
             return username;
         }
     }

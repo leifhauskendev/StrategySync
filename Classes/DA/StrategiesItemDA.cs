@@ -1,8 +1,10 @@
 ﻿using MySql.Data.MySqlClient;
+using StrategySync.BL;
 using StrategySync.Classes.Strategy;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace StrategySync.Classes.DA
 {
@@ -16,7 +18,7 @@ namespace StrategySync.Classes.DA
             {
                 connection.Open();
                 using (MySqlCommand command = new MySqlCommand(
-                    "INSERT INTO strategies_item(strategy_id, role_id, grenade_id, description, x_coordinate, y_coordinate) VALUES(@StrategyId, @RoleId, @GrenadeId, @Description, @XCoordinate, @YCoordinate)", connection))
+                    "INSERT INTO strategies_item(strategy_id, role_id, grenade_id, description, x_coordinate, y_coordinate) VALUES(@StrategyId, @RoleId, @GrenadeId, @Description, @XCoordinate, @YCoordinate); SELECT LAST_INSERT_ID();", connection))
                 {
                     command.Parameters.AddWithValue("@StrategyId", strategyItem.StrategyID);
                     command.Parameters.AddWithValue("@RoleId", 0);
@@ -25,7 +27,9 @@ namespace StrategySync.Classes.DA
                     command.Parameters.AddWithValue("@XCoordinate", strategyItem.XCoordinate);
                     command.Parameters.AddWithValue("@YCoordinate", strategyItem.YCoordinate);
 
-                    command.ExecuteNonQuery();
+                    var returnedId = Convert.ToInt32(command.ExecuteScalar());
+
+                    LoggingDA.WriteLog("Create", "CreateStrategyItem", (Application.Current as App).User, returnedId);
                 }
             }
         }
@@ -57,6 +61,8 @@ namespace StrategySync.Classes.DA
                     }
                 }
             }
+
+            LoggingDA.WriteLog("Read", "ReadStrategyItem", (Application.Current as App).User, itemId);
 
             return strategyItem;
         }
@@ -90,6 +96,8 @@ namespace StrategySync.Classes.DA
                 }
             }
 
+            LoggingDA.WriteLog("Read", "ReadStrategyItemsByStrategyId", (Application.Current as App).User, strategyId);
+
             return strategyItems;
         }
 
@@ -113,6 +121,8 @@ namespace StrategySync.Classes.DA
                     command.ExecuteNonQuery();
                 }
             }
+
+            LoggingDA.WriteLog("Update", "UpdateStrategyItem", (Application.Current as App).User, strategyItem.ItemID);
         }
 
         public static void DeleteRecordById(int id)
@@ -127,6 +137,8 @@ namespace StrategySync.Classes.DA
                     command.ExecuteNonQuery();
                 }
             }
+
+            LoggingDA.WriteLog("Delete", "DeleteStrategyItem", (Application.Current as App).User, id);
         }
 
     }

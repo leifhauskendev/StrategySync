@@ -33,6 +33,7 @@
             <Button x:Name="CheckInOutButton" Grid.Column="4" Content="Check Out" Margin="10" Click="CheckInOutButton_Click"/>
             <Image x:Name="Save" Grid.Column="6" Source="https://static.thenounproject.com/png/2371021-200.png" Width="40" Height="40" HorizontalAlignment="Left" Margin="5" MouseDown="Save_MouseDown" Visibility="Hidden"/>
 
+            <Button x:Name="ExitButton" Grid.Column="7" Width="100" Content="Exit" Margin="10" Click="ExitButton_Click" HorizontalAlignment="Right"/>
 
         </Grid>
         <Grid Grid.Row="1">

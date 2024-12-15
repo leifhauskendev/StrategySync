@@ -13,13 +13,12 @@ namespace StrategySync.BL
     public class StrategyBL
     { 
         public static App app = (App)Application.Current;
-        public static bool SaveNewStrategy (Strategy strategy)
+        public static int SaveNewStrategy (Strategy strategy)
         {
             try
             {
                 strategy.UserIds = app.User;
                 strategy.LastOpened = DateTime.Now;
-                strategy.CheckedOutTo = string.Empty;
                 if (strategy.Description == null)
                 {
                     strategy.Description = string.Empty;
@@ -35,13 +34,13 @@ namespace StrategySync.BL
                     }
                     StrategiesItemDA.CreateRecord(item);
                 }
+
+                return newId;
             }
             catch (Exception ex)
             {
-                return false;
+                return -1;
             }
-
-            return true;
         }
 
         public static bool SaveExistingStrategy (Strategy strategy, ObservableCollection<StrategyItem> deletedItems)
