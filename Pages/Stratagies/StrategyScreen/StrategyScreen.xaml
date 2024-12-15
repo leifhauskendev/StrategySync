@@ -7,6 +7,11 @@
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1920"
       Title="StrategyScreen">
+
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisConverter" />
+    </Page.Resources>
+    
     <Grid Style="{StaticResource GridStyle1}">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -66,9 +71,13 @@
                         <TextBox x:Name="DescriptionTextBox" Text="{Binding Source.Description,  UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" HorizontalAlignment="Left" Margin="10" Width="400" Height="350" Style="{StaticResource TextBoxStyle2}"/>
                     </Grid>
                 </StackPanel>
-                <StackPanel Grid.Row="1" Height="540">
+                <StackPanel Grid.Row="1" Height="540" Name="SelectedItem">
                     <Grid>
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -76,9 +85,40 @@
                         </Grid.RowDefinitions>
                         <TextBlock Text="Selected Item" HorizontalAlignment="Center" Grid.Row="0" FontSize="20" Margin="20" Style="{StaticResource TextBlockStyle1}"/>
                         <TextBlock x:Name="ItemDescriptionLabel" Text="Description" HorizontalAlignment="Left" Grid.Row="1" Padding="10" Visibility="Hidden" Style="{StaticResource TextBlockStyle2}"/>
-                        <TextBox x:Name="ItemDescription" TextChanged="ItemDescription_TextChanged" Grid.Row="2" HorizontalAlignment="Left" Margin="10" Width="400" Height="200" Visibility="Hidden" Text="{Binding SelectedItem.Description, Mode=TwoWay}" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource TextBoxStyle2}"/>
-                        <TextBlock x:Name="NoneSelected" Text="No item selected." Grid.Row="2" HorizontalAlignment="Center" Margin="10" Style="{StaticResource TextBlockStyle2}"/>
-                        <Button x:Name="DeleteButton" Grid.Row="3" Content="Delete" FontSize="15" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="DeleteButton_Click" Padding="10" Visibility="Hidden"/>
+                        <TextBox x:Name="ItemDescription" TextChanged="ItemDescription_TextChanged" Grid.Row="2" HorizontalAlignment="Left" Margin="10" Width="400" Height="125" Visibility="Hidden" Text="{Binding SelectedItem.Description, Mode=TwoWay}" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource TextBoxStyle2}"/>
+                        <TextBlock x:Name="NoneSelected" Text="No item selected." Grid.Row="2" HorizontalAlignment="Center" Margin="10"/>
+
+                        <!-- Editable TextBox for Link -->
+                        <TextBlock x:Name="ItemLinkLabel" Text="Add a link" HorizontalAlignment="Left" Grid.Row="3" Visibility="Hidden" Margin="10,0,0,0"/>
+                        <TextBox x:Name="ItemLinkEditor" Grid.Row="4" Margin="10" Width="400" Visibility="Collapsed" Height="32" HorizontalAlignment="Left" 
+                            Text="{Binding SelectedItem.Link, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                            ToolTip="Edit the link and press Enter to save" />
+
+                        <!-- Hyperlink for Navigation -->
+                        <TextBlock Grid.Row="4" HorizontalAlignment="Left" Margin="10" Visibility="Visible" Name="HyperLinkText" Height="32">
+                            <Hyperlink NavigateUri="{Binding SelectedItem.Link}" RequestNavigate="Hyperlink_RequestNavigate">
+                                <TextBlock Text="{Binding SelectedItem.Link}" />
+                            </Hyperlink>
+                        </TextBlock>
+
+                        <Popup x:Name="ImagePopup" Placement="Mouse" StaysOpen="True">
+                            <Border BorderBrush="Black" BorderThickness="2" Background="White">
+                                <Image x:Name="PopupImage" Width="800" Height="800" Stretch="Uniform" />
+                            </Border>
+                        </Popup>
+
+                        <!-- Image that triggers the popup -->
+                        <Image Grid.Row="5" x:Name="SelectedImage" Width="100" Height="100" Source="{Binding SelectedImageSource}" 
+                            HorizontalAlignment="Right" Margin="0,0,38,10" Visibility="Hidden"
+                            MouseEnter="SelectedImage_MouseEnter" 
+                            MouseLeave="SelectedImage_MouseLeave" 
+                            MouseLeftButtonDown="SelectedImage_MouseLeftButtonDown" />
+
+                        <!-- Buttons -->
+
+                        <Button Grid.Row="5" x:Name="EditButton" Content="Save Link" Width="100" Height="20" Click="EditButton_Click" Visibility="Hidden" HorizontalAlignment="Left" Margin="10"/>
+                        <Button Grid.Row="5"  x:Name="UploadPicture" Click="UploadPicture_Click" Margin="0,0,60,0" Width="100" Visibility="Hidden" Content="Upload Picture" Height="20"/>
+                        <Button x:Name="DeleteButton" Grid.Row="5" Content="Delete Item" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="DeleteButton_Click" Padding="10" Margin="10,0,0,0" Visibility="Hidden"/>
                     </Grid>
                 </StackPanel>
             </StackPanel>

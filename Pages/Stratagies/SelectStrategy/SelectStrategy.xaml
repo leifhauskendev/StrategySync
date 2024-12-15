@@ -11,7 +11,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
+ 
         <TextBlock Grid.Row="0" Text="Strategies" HorizontalAlignment="Left" FontSize="40" Margin="10" Style="{StaticResource TextBlockStyle1}"/>
         <Button Grid.Row="0" Content="Create Strategy" HorizontalAlignment="Right" Height="30" Padding="5" Margin="10" VerticalAlignment="Center" Click="CreateStrategy_Click" Style="{StaticResource ButtonStyle}"/>
 

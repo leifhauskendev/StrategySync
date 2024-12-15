@@ -13,4 +13,4 @@
             <Button Content="Close Menu" Width="150" Height="40" Click="CloseMenu_Click" Margin="0,5,0,0" Style="{StaticResource ButtonStyle}"/>
         </StackPanel>
     </Grid>
-</Window>
+</Window> 
