@@ -71,7 +71,7 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-
+            ItemCanvas.Children.Clear();
             var selectStrategyWindow = new SelectStrategy();
             selectStrategyWindow.ShowDialog();
             SetStrategy();
