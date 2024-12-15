@@ -7,12 +7,12 @@
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1920"
       Title="StrategyScreen">
-    <Grid>
+    <Grid Style="{StaticResource GridStyle1}">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid>
+        <Grid Style="{StaticResource GridStyle2}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="40"/>
                 <ColumnDefinition Width="1"/>
@@ -30,10 +30,10 @@
             <Button Grid.Column="2" Width="40" Height="40" Click="ShareStrategyIcon_Click" ToolTip="Share Strategy" Background="Transparent" BorderBrush="Transparent">
                 <Image Source="/Media/Icons/share.png" Stretch="Uniform"/>
             </Button>
-            <Button x:Name="CheckInOutButton" Grid.Column="4" Content="Check Out" Margin="10" Click="CheckInOutButton_Click"/>
+            <Button x:Name="CheckInOutButton" Grid.Column="4" Content="Check Out" Margin="10" Click="CheckInOutButton_Click" Style="{StaticResource ButtonStyle2}"/>
             <Image x:Name="Save" Grid.Column="6" Source="https://static.thenounproject.com/png/2371021-200.png" Width="40" Height="40" HorizontalAlignment="Left" Margin="5" MouseDown="Save_MouseDown" Visibility="Hidden"/>
 
-            <Button x:Name="ExitButton" Grid.Column="7" Width="100" Content="Exit" Margin="10" Click="ExitButton_Click" HorizontalAlignment="Right"/>
+            <Button x:Name="ExitButton" Grid.Column="7" Width="100" Content="Exit" Margin="10" Click="ExitButton_Click" HorizontalAlignment="Right" Style="{StaticResource ButtonStyle2}"/>
 
         </Grid>
         <Grid Grid.Row="1">
@@ -58,12 +58,12 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Text="Strategy Info" HorizontalAlignment="Center" Grid.Row="0" FontSize="20" Padding="20"/>
-                        <TextBlock Text="Name" Grid.Row="1" HorizontalAlignment="Left" Margin="10"/>
-                        <TextBox x:Name="NameTextBox" Text="{Binding Source.Name,  UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" HorizontalAlignment="Left" Margin="10" Width="400"/>
+                        <TextBlock Text="Strategy Info" HorizontalAlignment="Center" Grid.Row="0" FontSize="20" Padding="20" Style="{StaticResource TextBlockStyle1}"/>
+                        <TextBlock Text="Name" Grid.Row="1" HorizontalAlignment="Left" Margin="10" Style="{StaticResource TextBlockStyle2}"/>
+                        <TextBox x:Name="NameTextBox" Text="{Binding Source.Name,  UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" HorizontalAlignment="Left" Margin="10" Width="400" Style="{StaticResource TextBoxStyle2}"/>
 
-                        <TextBlock Text="Description" Grid.Row="3" HorizontalAlignment="Left" Margin="10"/>
-                        <TextBox x:Name="DescriptionTextBox" Text="{Binding Source.Description,  UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" HorizontalAlignment="Left" Margin="10" Width="400" Height="350"/>
+                        <TextBlock Text="Description" Grid.Row="3" HorizontalAlignment="Left" Margin="10" Style="{StaticResource TextBlockStyle2}"/>
+                        <TextBox x:Name="DescriptionTextBox" Text="{Binding Source.Description,  UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" HorizontalAlignment="Left" Margin="10" Width="400" Height="350" Style="{StaticResource TextBoxStyle2}"/>
                     </Grid>
                 </StackPanel>
                 <StackPanel Grid.Row="1" Height="540">
@@ -74,10 +74,10 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="100"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Text="Selected Item" HorizontalAlignment="Center" Grid.Row="0" FontSize="20" Margin="20"/>
-                        <TextBlock x:Name="ItemDescriptionLabel" Text="Description" HorizontalAlignment="Left" Grid.Row="1" Padding="10" Visibility="Hidden"/>
-                        <TextBox x:Name="ItemDescription" TextChanged="ItemDescription_TextChanged" Grid.Row="2" HorizontalAlignment="Left" Margin="10" Width="400" Height="200" Visibility="Hidden" Text="{Binding SelectedItem.Description, Mode=TwoWay}" AcceptsReturn="True" TextWrapping="Wrap"/>
-                        <TextBlock x:Name="NoneSelected" Text="No item selected." Grid.Row="2" HorizontalAlignment="Center" Margin="10"/>
+                        <TextBlock Text="Selected Item" HorizontalAlignment="Center" Grid.Row="0" FontSize="20" Margin="20" Style="{StaticResource TextBlockStyle1}"/>
+                        <TextBlock x:Name="ItemDescriptionLabel" Text="Description" HorizontalAlignment="Left" Grid.Row="1" Padding="10" Visibility="Hidden" Style="{StaticResource TextBlockStyle2}"/>
+                        <TextBox x:Name="ItemDescription" TextChanged="ItemDescription_TextChanged" Grid.Row="2" HorizontalAlignment="Left" Margin="10" Width="400" Height="200" Visibility="Hidden" Text="{Binding SelectedItem.Description, Mode=TwoWay}" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource TextBoxStyle2}"/>
+                        <TextBlock x:Name="NoneSelected" Text="No item selected." Grid.Row="2" HorizontalAlignment="Center" Margin="10" Style="{StaticResource TextBlockStyle2}"/>
                         <Button x:Name="DeleteButton" Grid.Row="3" Content="Delete" FontSize="15" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="DeleteButton_Click" Padding="10" Visibility="Hidden"/>
                     </Grid>
                 </StackPanel>
@@ -102,7 +102,7 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="0.75*"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Text="Grenades" HorizontalAlignment="Center" Grid.Row="0" FontSize="20" Padding="20"/>
+                        <TextBlock Text="Grenades" HorizontalAlignment="Center" Grid.Row="0" FontSize="20" Padding="20" Style="{StaticResource TextBlockStyle1}"/>
                         <StackPanel Grid.Row="1">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -141,7 +141,7 @@
                             <RowDefinition Height="0.33*"/>
                             <RowDefinition Height="0.33*"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Text="Drawing" HorizontalAlignment="Center" Grid.Row="0" FontSize="20" Padding="20"/>
+                        <TextBlock Text="Drawing" HorizontalAlignment="Center" Grid.Row="0" FontSize="20" Padding="20" Style="{StaticResource TextBlockStyle1}"/>
                         <StackPanel Orientation="Horizontal" Margin="5,10,0,0" Grid.Row="1" HorizontalAlignment="Center">
                             <ToggleButton x:Name="PenBtn" Padding="5" Margin="0,0,10,0" ToolTip="Pen" Background="White" Click="PenBtn_Click">
                                 <Image Height="24" Width="24" Source="https://img.icons8.com/fluency/48/pen-1.png"/>

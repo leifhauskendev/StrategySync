@@ -6,19 +6,19 @@
         xmlns:local="clr-namespace:StrategySync.Pages.Stratagies"
         mc:Ignorable="d"
         Title="Select Strategy" Height="600" Width="1000">
-    <Grid>
+    <Grid Style="{StaticResource GridStyle1}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="Strategies" HorizontalAlignment="Left" FontSize="40" Margin="10"/>
-        <Button Grid.Row="0" Content="Create Strategy" HorizontalAlignment="Right" Height="30" Padding="5" Margin="10" VerticalAlignment="Center" Click="CreateStrategy_Click"/>
+        <TextBlock Grid.Row="0" Text="Strategies" HorizontalAlignment="Left" FontSize="40" Margin="10" Style="{StaticResource TextBlockStyle1}"/>
+        <Button Grid.Row="0" Content="Create Strategy" HorizontalAlignment="Right" Height="30" Padding="5" Margin="10" VerticalAlignment="Center" Click="CreateStrategy_Click" Style="{StaticResource ButtonStyle}"/>
 
         <TextBlock Grid.Row="1" Text="No data." FontSize="15" HorizontalAlignment="Center" Visibility="{Binding NoDataTextVisiblity}"/>
         <TextBlock Grid.Row="1" Text="Loading..." FontSize="15" HorizontalAlignment="Center" Visibility="{Binding LoadingTextVisiblity}"/>
 
-        <ListView x:Name="StrategyListView" Grid.Row="1" Visibility="{Binding StrategyListVisiblity}" ItemsSource="{Binding Source}">
+        <ListView x:Name="StrategyListView" Grid.Row="1" Visibility="{Binding StrategyListVisiblity}" ItemsSource="{Binding Source}" Style="{StaticResource ListViewStyle}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid ShowGridLines="False" MouseDown="Strategy_Click">

@@ -14,7 +14,7 @@
         <converter:EnumToIntConverter x:Key="EnumToIntConverter"/>
     </Window.Resources>
 
-    <Grid Margin="20">
+    <Grid Style="{StaticResource GridStyle1}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -27,12 +27,12 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="Name"/>
-        <TextBox Grid.Row="0" Grid.Column="2" Text="{Binding Source.Name}"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Name" Grid.ColumnSpan="2" Margin="0,10,5,110" Style="{StaticResource TextBlockStyle1}"/>
+        <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding Source.Name}" Margin="0,10,5,150"/>
 
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="Map"/>
-        <ComboBox Name="MapComboBox" Grid.Row="1" Grid.Column="2" ItemsSource="{Binding Source={x:Type enums:Map}, Converter={StaticResource EnumToListConverter}}" SelectedValue="{Binding Source.Map, Mode=TwoWay, Converter={StaticResource EnumToIntConverter}}" SelectionChanged="Map_SelectionChanged"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Map" Grid.ColumnSpan="2" Margin="2,45,2,77" Style="{StaticResource TextBlockStyle1}"/>
+        <ComboBox Name="MapComboBox" Grid.Row="2" Grid.Column="2" ItemsSource="{Binding Source={x:Type enums:Map}, Converter={StaticResource EnumToListConverter}}" SelectedValue="{Binding Source.Map, Mode=TwoWay, Converter={StaticResource EnumToIntConverter}}" SelectionChanged="Map_SelectionChanged" Margin="0,45,5,118"/>
 
-        <Button Grid.Row="2" Grid.Column="2" Content="Create" VerticalAlignment="Bottom" Margin="60,0,0,0" Click="Create_Click"/>
+        <Button Grid.Row="2" Grid.Column="1" Content="Create" VerticalAlignment="Center" Margin="38,0,60,0" Click="Create_Click" Style="{StaticResource ButtonStyle}" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

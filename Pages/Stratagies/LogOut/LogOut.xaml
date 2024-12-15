@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:StrategySync.Pages.Stratagies.LogOut"
         mc:Ignorable="d"
         Title="User Menu" Height="250" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
-    <Grid>
+    <Grid Style="{StaticResource GridStyle1}">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" >
-            <Button Content="Logout" Width="150" Height="40" Click="Logout_Click"/>
-            <Button Content="Exit Program" Width="150" Height="40" Click="ExitProgram_Click"/>
-            <Button Content="Close Menu" Width="150" Height="40" Click="CloseMenu_Click"/>
+            <Button Content="Logout" Width="150" Height="40" Click="Logout_Click" Margin="0,0,0,0" Style="{StaticResource ButtonStyle}"/>
+            <Button Content="Exit Program" Width="150" Height="40" Click="ExitProgram_Click" Margin="0,5,0,0"  Style="{StaticResource ButtonStyle}"/>
+            <Button Content="Close Menu" Width="150" Height="40" Click="CloseMenu_Click" Margin="0,5,0,0" Style="{StaticResource ButtonStyle}"/>
         </StackPanel>
     </Grid>
 </Window>

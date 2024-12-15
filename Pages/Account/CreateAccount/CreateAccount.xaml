@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:StrategySync.Pages.Account.CreateAccount"
         mc:Ignorable="d"
         Title="CreateAccount" Height="300" Width="300">
-    <Grid Margin="20">
+    <Grid Style="{StaticResource GridStyle1}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
@@ -22,21 +22,21 @@
         </Grid.RowDefinitions>
 
         <TextBlock Text="Create Account" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" 
-                   Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,20"/>
+                   Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,20" Style="{StaticResource TextBlockStyle1}"/>
 
-        <TextBlock Text="Username:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="0,5,0,5" />
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="0,5,0,5" Name="UsernameTextBox" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock Text="Username:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="-5,0,5,0" TextAlignment="Right" Style="{StaticResource TextBlockStyle2}"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="0,5,0,5" Name="UsernameTextBox" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle1}"/>
 
-        <TextBlock Text="Email:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="0,5,0,5"/>
-        <TextBox Grid.Row="2" Grid.Column="1" Margin="0,5,0,5" Name="EmailTextBox" Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock Text="Email:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="-5,0,5,0" TextAlignment="Right" Style="{StaticResource TextBlockStyle2}"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Margin="0,5,0,5" Name="EmailTextBox" Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle1}"/>
 
-        <TextBlock Text="Password:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="0,5,0,5"/>
-        <PasswordBox Grid.Row="3" Grid.Column="1" Margin="0,5,0,5" Name="PasswordBox"/>
+        <TextBlock Text="Password:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="-5,0,5,0" TextAlignment="Right" Style="{StaticResource TextBlockStyle2}"/>
+        <PasswordBox Grid.Row="3" Grid.Column="1" Margin="0,5,0,5" Name="PasswordBox" Style="{StaticResource PassBoxStyle1}"/>
 
-        <TextBlock Text="Confirm Password:" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Margin="0,5,5,5"/>
-        <PasswordBox Grid.Row="4" Grid.Column="1" Margin="0,5,0,5" Name="ConfirmPasswordBox"/>
+        <TextBlock Text="Confirm Password:" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Margin="0,5,5,5" TextAlignment="Right" Style="{StaticResource TextBlockStyle2}"/>
+        <PasswordBox Grid.Row="4" Grid.Column="1" Margin="0,5,0,5" Name="ConfirmPasswordBox" Style="{StaticResource PassBoxStyle1}"/>
 
         <Button Content="Create Account" Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Center" Width="150" Height="30" 
-                Margin="0,20,0,0" Click="CreateAccountButton_Click"/>
+                Margin="0,20,0,0" Click="CreateAccountButton_Click" Style="{StaticResource ButtonStyle}"/>
     </Grid>
 </Window>

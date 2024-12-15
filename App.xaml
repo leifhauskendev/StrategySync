@@ -4,6 +4,56 @@
              xmlns:local="clr-namespace:StrategySync"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style x:Key="WindowStyle" TargetType="Window">
+            <Setter Property="Background" Value="#07013d"/>
+        </Style>
+        <Style x:Key="GridStyle1" TargetType="Grid">
+            <Setter Property="Background" Value="#07013d"/>
+        </Style>
+        <Style x:Key="GridStyle2" TargetType="Grid">
+            <Setter Property="Background" Value="White"/>
+        </Style>
+        <Style x:Key="ListViewStyle" TargetType="ListView">
+            <Setter Property="Background" Value="#07013d"/>
+            <Setter Property="BorderBrush" Value="LightCyan"/>
+            <Setter Property="Foreground" Value="LightCyan"/>
+        </Style>
+        <Style x:Key="TextBlockStyle1" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="LightCyan"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style x:Key="TextBlockStyle2" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="LightCyan"/>
+        </Style>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#333333"/>
+            <Setter Property="Foreground" Value="LightCyan"/>
+            <Setter Property="BorderBrush" Value="LightCyan"/>
+        </Style>
+        <Style x:Key="ButtonStyle2" TargetType="Button">
+            <Setter Property="Background" Value="Gray"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#333333"/>
+        </Style>
+        <Style x:Key="TextBoxStyle1" TargetType="TextBox">
+            <Setter Property="Background" Value="LightCyan"/>
+            <Setter Property="BorderBrush" Value="Blue"/>
+        </Style>
+        <Style x:Key="TextBoxStyle2" TargetType="TextBox">
+            <Setter Property="Background" Value="#07013d"/>
+            <Setter Property="BorderBrush" Value="LightCyan"/>
+            <Setter Property="Foreground" Value="LightCyan"/>
+        </Style>
+        <Style x:Key="PassBoxStyle1" TargetType="PasswordBox">
+            <Setter Property="Background" Value="LightCyan"/>
+            <Setter Property="BorderBrush" Value="Blue"/>
+        </Style>
+        <Style x:Key="StackStyle1" TargetType="StackPanel">
+            <Setter Property="Background" Value="#07013d"/>
+        </Style>
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="Foreground" Value="LightCyan"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
     </Application.Resources>
 </Application>
