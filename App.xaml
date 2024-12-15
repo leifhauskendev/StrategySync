@@ -8,7 +8,7 @@
             <Setter Property="Background" Value="#07013d"/>
         </Style>
         <Style x:Key="GridStyle1" TargetType="Grid">
-            <Setter Property="Background" Value="#07013d"/>
+            <Setter Property="Background" Value="#07013d"/> 
         </Style>
         <Style x:Key="GridStyle2" TargetType="Grid">
             <Setter Property="Background" Value="White"/>
