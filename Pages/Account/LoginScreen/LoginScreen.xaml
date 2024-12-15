@@ -27,12 +27,12 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="50" Text="StrategySync" Style="{StaticResource TextBlockStyle1}"/>
-        <TextBox Grid.Row="2" Grid.Column="1"  x:Name="UsernameTextBox" Text="{Binding Source.Username, Mode=TwoWay}" Margin="0,5,0,5" Style="{StaticResource TextBoxStyle}"/>
+        <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="50" Text="StrategySync"/>
+        <TextBox Grid.Row="2" Grid.Column="1"  x:Name="UsernameTextBox" Text="{Binding Source.Username, Mode=TwoWay}" Margin="0,5,0,5"/>
         <!--<TextBox Grid.Row="3" Grid.Column="1" x:Name="PasswordTextBox" Text="{Binding Source.PasswordString, Mode=TwoWay}" Margin="0,5,0,5"/>-->
-        <PasswordBox Grid.Row="3" Grid.Column="1" PasswordChanged="PasswordBox_PasswordChanged" Name="PasswordBox" Style="{StaticResource PassBoxStyle}"/>
-        <Button Grid.Row="4" Grid.Column="1" Content="Login" Name="LoginButton" Click="LoginButton_Click" Margin="0,5,0,5" Style="{StaticResource ButtonStyle}"/>
-        <Button Grid.Row="5" Grid.Column="1" Content="Create Account" Name="CreateAccountButton" Click="CreateAccountButton_Click" Margin="0,5,0,5" Style="{StaticResource ButtonStyle}"/>
-        <Button Grid.Row="6" Grid.Column="1" Content="Forgot Password" Name="ForgotPasswordButton" Click="ForgotPasswordButton_Click" Margin="0,5,0,5" Style="{StaticResource ButtonStyle}"/>
+        <PasswordBox Grid.Row="3" Grid.Column="1" PasswordChanged="PasswordBox_PasswordChanged" Name="PasswordBox"/>
+        <Button Grid.Row="4" Grid.Column="1" Content="Login" Name="LoginButton" Click="LoginButton_Click" Margin="0,5,0,5"/>
+        <Button Grid.Row="5" Grid.Column="1" Content="Create Account" Name="CreateAccountButton" Click="CreateAccountButton_Click" Margin="0,5,0,5"/>
+        <Button Grid.Row="6" Grid.Column="1" Content="Forgot Password" Name="ForgotPasswordButton" Click="ForgotPasswordButton_Click" Margin="0,5,0,5"/>
     </Grid>
 </Page>
