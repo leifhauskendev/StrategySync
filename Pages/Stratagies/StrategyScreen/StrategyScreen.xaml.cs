@@ -52,6 +52,12 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
             var selectStrategyWindow = new SelectStrategy();
             selectStrategyWindow.ShowDialog();
             SetStrategy();
+
+            var user = (Application.Current as App).User;
+            if (user == "leif" || user == "Andy" || user == "Trevor")
+            {
+                TestingButton.Visibility = Visibility.Visible;
+            }
         }
 
         private void EraserBtn_Click(object sender, RoutedEventArgs e)
@@ -429,7 +435,7 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
         {
             return ViewModel.Source.StrategyItems
                 .Select((item, idx) => new { item, idx })
-                .Where(x => x.item.ItemID == ViewModel.SelectedItem.ItemID)
+                .Where(x => x.item == ViewModel.SelectedItem)
                 .Select(x => x.idx)
                 .FirstOrDefault();
         }
@@ -459,7 +465,7 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
             for (int i = 0; i < ItemCanvas.Children.Count; i++)
             {
                 var child = ItemCanvas.Children[i];
-                if (child is Image image && Equals((image.Tag as StrategyItem).ItemID, ViewModel.Source.StrategyItems[index].ItemID))
+                if (child is Image image && Equals((image.Tag as StrategyItem), ViewModel.Source.StrategyItems[index]))
                 {
                     ItemCanvas.Children.RemoveAt(i);
                     break;
