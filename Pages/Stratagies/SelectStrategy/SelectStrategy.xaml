@@ -51,7 +51,7 @@
                         <TextBlock Grid.Column="9" Text="Checked Out: "/>
                         <TextBlock Grid.Column="11" Text="{Binding IsCheckedOut}"/>
 
-                        <Button x:Name="DeleteButton" Grid.Column="13" Width="15" Height="15" Click="DeleteButton_Click" ToolTip="Delete this strategy" Background="Transparent" BorderBrush="Transparent" Visibility="{Binding IsOwner}">
+                        <Button x:Name="DeleteButton" Grid.Column="13" Width="15" Height="15" Click="DeleteButton_Click" ToolTip="Delete this strategy" Background="White" BorderBrush="Transparent" Visibility="{Binding IsOwner}">
                             <Image Source="/Media/Icons/TrashbinIcon.png" Stretch="Uniform"/>
                         </Button>
                     </Grid>
