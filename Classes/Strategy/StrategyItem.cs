@@ -13,6 +13,9 @@ namespace StrategySync.Classes.Strategy
         private float _xCoordinate;
         private float _yCoordinate;
         private Image _image;
+        private string _link; 
+        private byte[] _mediaImage;
+        private Image _mediaImages;
 
 
 
@@ -103,6 +106,42 @@ namespace StrategySync.Classes.Strategy
                 {
                     _image = value;
                     OnPropertyChanged(nameof(Image));
+                }
+            }
+        }
+        public string Link
+        {
+            get { return _link; }
+            set
+            {
+                if (_link != value)
+                {
+                    _link = value;
+                    OnPropertyChanged(nameof(Link));
+                }
+            }
+        }
+        public byte[] MediaImage
+        {
+            get { return _mediaImage; }
+            set
+            {
+                if (_mediaImage != value)
+                {
+                    _mediaImage = value;
+                    OnPropertyChanged(nameof(MediaImage));
+                }
+            }
+        }
+        public Image MediaImages
+        {
+            get { return _mediaImages; }
+            set
+            {
+                if (_mediaImages != value)
+                {
+                    _mediaImages = value;
+                    OnPropertyChanged(nameof(MediaImages));
                 }
             }
         }

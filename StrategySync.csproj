@@ -274,6 +274,7 @@
       <DependentUpon>SelectStrategy.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Stratagies\SelectStrategy\SelectStrategyVM.cs" />
+    <Compile Include="Pages\Stratagies\StrategyScreen\TestingMethods.cs" />
     <Compile Include="Pages\Stratagies\StrategyScreen\StrategyScreen.xaml.cs">
       <DependentUpon>StrategyScreen.xaml</DependentUpon>
     </Compile>

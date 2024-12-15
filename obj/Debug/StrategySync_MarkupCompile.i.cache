@@ -12,9 +12,9 @@ DEBUG;TRACE
 C:\Users\trevs\Source\Repos\StrategySync\App.xaml
 9329549957
 
-37-110255494
+38178940496
 151-1456522277
 MainWindow.xaml;Pages\Account\CreateAccount\CreateAccount.xaml;Pages\Account\LoginScreen\LoginScreen.xaml;Pages\Account\ForgotPassword\ForgotPassword.xaml;Pages\Stratagies\AddUser\AddUser.xaml;Pages\Stratagies\CreateStrategy\CreateStrategyWindow.xaml;Pages\Stratagies\LogOut\LogOut.xaml;Pages\Stratagies\SelectStrategy\SelectStrategy.xaml;Pages\Stratagies\StrategyScreen\StrategyScreen.xaml;
 
-True
+False
 
