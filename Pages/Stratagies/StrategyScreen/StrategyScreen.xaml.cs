@@ -519,5 +519,21 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
             SetOnscreenItems();
             SetCheckInOutVisibilities(app.User);
         }
+
+        private void TestingButton_Click(object sender, RoutedEventArgs e)
+        {
+            TestingPanel.Visibility = Visibility.Visible;
+        }
+
+        private void TestingBackButton_Click(object sender, RoutedEventArgs e)
+        {
+            TestingPanel.Visibility = Visibility.Collapsed;
+        }
+
+        private void RunTestsButton_Click(object sender, RoutedEventArgs e)
+        {
+            //Put methods for testing in this. Send output to TestOutput textbox.
+
+        }
     }
 }
