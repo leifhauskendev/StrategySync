@@ -86,12 +86,12 @@
                         <TextBlock Text="Selected Item" HorizontalAlignment="Center" Grid.Row="0" FontSize="20" Margin="20" Style="{StaticResource TextBlockStyle1}"/>
                         <TextBlock x:Name="ItemDescriptionLabel" Text="Description" HorizontalAlignment="Left" Grid.Row="1" Padding="10" Visibility="Hidden" Style="{StaticResource TextBlockStyle2}"/>
                         <TextBox x:Name="ItemDescription" TextChanged="ItemDescription_TextChanged" Grid.Row="2" HorizontalAlignment="Left" Margin="10" Width="400" Height="125" Visibility="Hidden" Text="{Binding SelectedItem.Description, Mode=TwoWay}" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource TextBoxStyle2}"/>
-                        <TextBlock x:Name="NoneSelected" Text="No item selected." Grid.Row="2" HorizontalAlignment="Center" Margin="10"/>
+                        <TextBlock x:Name="NoneSelected" Text="No item selected." Grid.Row="2" HorizontalAlignment="Center" Margin="10" Style="{StaticResource TextBlockStyle2}"/>
 
                         <!-- Editable TextBox for Link -->
-                        <TextBlock x:Name="ItemLinkLabel" Text="Add a link" HorizontalAlignment="Left" Grid.Row="3" Visibility="Hidden" Margin="10,0,0,0"/>
+                        <TextBlock x:Name="ItemLinkLabel" Text="Add a link" HorizontalAlignment="Left" Grid.Row="3" Visibility="Hidden" Margin="10,0,0,0" Style="{StaticResource TextBlockStyle2}"/>
                         <TextBox x:Name="ItemLinkEditor" Grid.Row="4" Margin="10" Width="400" Visibility="Collapsed" Height="32" HorizontalAlignment="Left" 
-                            Text="{Binding SelectedItem.Link, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                            Text="{Binding SelectedItem.Link, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle2}" 
                             ToolTip="Edit the link and press Enter to save" />
 
                         <!-- Hyperlink for Navigation -->
@@ -116,9 +116,9 @@
 
                         <!-- Buttons -->
 
-                        <Button Grid.Row="5" x:Name="EditButton" Content="Save Link" Width="100" Height="20" Click="EditButton_Click" Visibility="Hidden" HorizontalAlignment="Left" Margin="10"/>
-                        <Button Grid.Row="5"  x:Name="UploadPicture" Click="UploadPicture_Click" Margin="0,0,60,0" Width="100" Visibility="Hidden" Content="Upload Picture" Height="20"/>
-                        <Button x:Name="DeleteButton" Grid.Row="5" Content="Delete Item" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="DeleteButton_Click" Padding="10" Margin="10,0,0,0" Visibility="Hidden"/>
+                        <Button Grid.Row="5" x:Name="EditButton" Content="Save Link" Width="100" Height="20" Click="EditButton_Click" Visibility="Hidden" HorizontalAlignment="Left" Margin="10" Style="{StaticResource ButtonStyle}"/>
+                        <Button Grid.Row="5"  x:Name="UploadPicture" Click="UploadPicture_Click" Margin="0,0,60,0" Width="100" Visibility="Hidden" Content="Upload Picture" Height="20" Style="{StaticResource ButtonStyle}"/>
+                        <Button x:Name="DeleteButton" Grid.Row="5" Content="Delete Item" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="DeleteButton_Click" Padding="10" Margin="10,0,0,0" Visibility="Hidden" Style="{StaticResource ButtonStyle}"/>
                     </Grid>
                 </StackPanel>
             </StackPanel>
