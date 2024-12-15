@@ -313,6 +313,8 @@
   <ItemGroup>
     <Resource Include="Media\Icons\arrow-left.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Media\Icons\TrashbinIcon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
