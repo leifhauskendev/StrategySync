@@ -162,6 +162,7 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
                     {
                         ItemCanvas.IsHitTestVisible = true;
                         DrawingCanvas.IsHitTestVisible = false;
+                        penEnabled = false;
                     }
                     else
                     {
@@ -176,6 +177,7 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
                     {
                         ItemCanvas.IsHitTestVisible = true;
                         DrawingCanvas.IsHitTestVisible = false;
+                        eraserEnabled = false;
                     }
                     else
                     {

@@ -13,7 +13,7 @@ namespace StrategySync.Classes.Strategy
         private float _xCoordinate;
         private float _yCoordinate;
         private Image _image;
-        private string _link; 
+        private string _link;
         private byte[] _mediaImage;
         private Image _mediaImages;
 
