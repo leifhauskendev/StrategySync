@@ -22,6 +22,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
+using System.ComponentModel;
 
 namespace StrategySync.Pages.Stratagies.StrategyScreen
 {
@@ -532,8 +533,29 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
 
         private void RunTestsButton_Click(object sender, RoutedEventArgs e)
         {
-            //Put methods for testing in this. Send output to TestOutput textbox.
+            bool result = false;
+            //Put methods for testing in this. Send output to console
 
+            result = TestingMethods.CreateStratTest();
+            if (result == false)
+                Console.WriteLine("Failed: Ids do not match");
+            else
+                Console.WriteLine("Passed");
+            result = TestingMethods.DeleteStratTest();
+            if (result == false)
+                Console.WriteLine("\nPassed");
+            else
+                Console.WriteLine("\nFailed: Strat was not deleted");
+            result = TestingMethods.ShareRecordTest();
+            if (result == false)
+                Console.WriteLine("\nFailed: User was not shared with");
+            else
+                Console.WriteLine("\nPassed");
+            result = TestingMethods.GetUsernameByEmailTest();
+            if (result == false)
+                Console.WriteLine("\nFailed: Username was not correct");
+            else
+                Console.WriteLine("\nPassed");
         }
     }
 }

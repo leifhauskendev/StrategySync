@@ -55,8 +55,7 @@
 
                 <Button x:Name="TestingBackButton" Content="Back" Click="TestingBackButton_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource ButtonStyle}" Margin="5,5,0,0" Grid.Column="1" Height="50" Width="100"/>
                 <Button x:Name="RunTestsButton" Content="Run Tests" Click="RunTestsButton_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource ButtonStyle}" Margin="5,5,0,0" Grid.Column="2" Height="50" Width="100"/>
-                <TextBox x:Name="TestOutput" Grid.Row="2" Grid.ColumnSpan="3" Height="Auto" Width="Auto" Margin="25,25,25,25" Style="{StaticResource TextBoxStyle1}"/>
-
+                <TextBlock x:Name="TestTextBlock" Text="See Output for test results" HorizontalAlignment="Left" Grid.Column="2" Padding="10" Style="{StaticResource TextBlockStyle2}" Margin="110,10,0,45" Grid.RowSpan="2"/>
             </Grid>
         </StackPanel>
 
