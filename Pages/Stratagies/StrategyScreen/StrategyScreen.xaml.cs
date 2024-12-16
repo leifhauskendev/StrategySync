@@ -453,7 +453,10 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
 
         private void ItemDescription_TextChanged(object sender, TextChangedEventArgs e)
         {
-            ViewModel.SelectedItem.Description = ItemDescription.Text;
+            if (ViewModel.SelectedItem != null) 
+            {
+                ViewModel.SelectedItem.Description = ItemDescription.Text;
+            }
 
             ViewModel.Source.StrategyItems[GetIndexOfStrategyItem()] = ViewModel.SelectedItem;
         }

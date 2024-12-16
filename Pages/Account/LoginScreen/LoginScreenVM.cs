@@ -33,17 +33,28 @@ namespace StrategySync
         public bool ValidateLoginInfo()
         {
             var retrievedUser = UserDA.ReadRecord(Source.Username);
-            var decryptedPassword = User.DecryptStringFromBytes(retrievedUser.EncryptedPassword, retrievedUser.AESKey, retrievedUser.AESIV);
-            Source.Salt = retrievedUser.Salt;
-
-            if (decryptedPassword == Source.HashPasswordWithArgon2(Source.PasswordString)) {
-                var app = (App)Application.Current;
-                app.User = Source.Username;
-                return true;
-            } else
+            if (retrievedUser.Username != null)
             {
-                return false;
+                var decryptedPassword = User.DecryptStringFromBytes(retrievedUser.EncryptedPassword, retrievedUser.AESKey, retrievedUser.AESIV);
+                Source.Salt = retrievedUser.Salt;
+
+                if (decryptedPassword == Source.HashPasswordWithArgon2(Source.PasswordString))
+                {
+                    var app = (App)Application.Current;
+                    app.User = Source.Username;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
+            else
+            {
+                MessageBox.Show("User does not exist.");
+            }
+
+            return false;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
