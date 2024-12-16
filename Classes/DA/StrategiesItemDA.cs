@@ -12,7 +12,7 @@ namespace StrategySync.Classes.DA
     {
         private static string connectionString = "Server=strategysync.mysql.database.azure.com; Port=3306; Database=strategysync; Uid=sysadmin; Pwd=Password1!; SslMode=Required;";
 
-        public static void CreateRecord(StrategyItem strategyItem)
+        public static int CreateRecord(StrategyItem strategyItem)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -32,6 +32,8 @@ namespace StrategySync.Classes.DA
                     var returnedId = Convert.ToInt32(command.ExecuteScalar());
 
                     LoggingDA.WriteLog("Create", "CreateStrategyItem", (Application.Current as App).User, returnedId);
+
+                    return returnedId;
                 }
             }
         }

@@ -543,27 +543,59 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
         {
             bool result = false;
             //Put methods for testing in this. Send output to console
-
+            //Strategy Screen Tests
+            Console.WriteLine("\nTesting Create Strat Method");
             result = TestingMethods.CreateStratTest();
             if (result == false)
                 Console.WriteLine("Failed: Ids do not match");
             else
                 Console.WriteLine("Passed");
+
+            Console.WriteLine("\nTesting Delete Strat Method");
             result = TestingMethods.DeleteStratTest();
             if (result == false)
-                Console.WriteLine("\nPassed");
+                Console.WriteLine("Passed");
             else
-                Console.WriteLine("\nFailed: Strat was not deleted");
+                Console.WriteLine("Failed: Strat was not deleted");
+
+            Console.WriteLine("\nTesting Share Strat Method");
             result = TestingMethods.ShareRecordTest();
             if (result == false)
-                Console.WriteLine("\nFailed: User was not shared with");
+                Console.WriteLine("Failed: User was not shared with");
             else
-                Console.WriteLine("\nPassed");
+                Console.WriteLine("Passed");
+
+            //Login Sceen Tests
+
+            Console.WriteLine("\nTesting Get Username by Email Method");
             result = TestingMethods.GetUsernameByEmailTest();
             if (result == false)
-                Console.WriteLine("\nFailed: Username was not correct");
+                Console.WriteLine("Failed: Username was not correct");
             else
-                Console.WriteLine("\nPassed");
+                Console.WriteLine("Passed");
+
+            Console.WriteLine("\nTesting Create User Method");
+            result = TestingMethods.CreateReadRecordTest();
+            if (result == false)
+                Console.WriteLine("Failed: Usernames are not same");
+            else 
+                Console.WriteLine("Passed");
+
+            //Strategy Item Tests
+
+            Console.WriteLine("\nTesting Created Item Method");
+            result = TestingMethods.CreateItemTest();
+            if (result == false)
+                Console.WriteLine("Failed: Item IDs are not same");
+            else
+                Console.WriteLine("Passed");
+
+            Console.WriteLine("\nTesting Delete Item Method");
+            result = TestingMethods.DeleteItemTest();
+            if (result == false)
+                Console.WriteLine("Failed: Item ID was not null");
+            else
+                Console.WriteLine("Passed");
         }
     }
 }
