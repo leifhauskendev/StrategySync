@@ -108,13 +108,11 @@
                         <TextBox x:Name="ItemDescription" TextChanged="ItemDescription_TextChanged" Grid.Row="2" HorizontalAlignment="Left" Margin="10" Width="400" Height="125" Visibility="Hidden" Text="{Binding SelectedItem.Description, Mode=TwoWay}" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource TextBoxStyle2}"/>
                         <TextBlock x:Name="NoneSelected" Text="No item selected." Grid.Row="2" HorizontalAlignment="Center" Margin="10" Style="{StaticResource TextBlockStyle2}"/>
 
-                        <!-- Editable TextBox for Link -->
                         <TextBlock x:Name="ItemLinkLabel" Text="Add a link" HorizontalAlignment="Left" Grid.Row="3" Visibility="Hidden" Margin="10,0,0,0" Style="{StaticResource TextBlockStyle2}"/>
                         <TextBox x:Name="ItemLinkEditor" Grid.Row="4" Margin="10" Width="400" Visibility="Collapsed" Height="32" HorizontalAlignment="Left" 
                             Text="{Binding SelectedItem.Link, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle2}" 
                             ToolTip="Edit the link and press Enter to save" />
 
-                        <!-- Hyperlink for Navigation -->
                         <TextBlock Grid.Row="4" HorizontalAlignment="Left" Margin="10" Visibility="Visible" Name="HyperLinkText" Height="32">
                             <Hyperlink NavigateUri="{Binding SelectedItem.Link, Converter={StaticResource StringToUriConverter}}" RequestNavigate="Hyperlink_RequestNavigate">
                                 <TextBlock Text="{Binding SelectedItem.Link}" />
@@ -127,14 +125,11 @@
                             </Border>
                         </Popup>
 
-                        <!-- Image that triggers the popup -->
                         <Image Grid.Row="5" x:Name="SelectedImage" Width="100" Height="100" Source="{Binding SelectedImageSource}" 
                             HorizontalAlignment="Right" Margin="0,0,38,10" Visibility="Hidden"
                             MouseEnter="SelectedImage_MouseEnter" 
                             MouseLeave="SelectedImage_MouseLeave" 
                             MouseLeftButtonDown="SelectedImage_MouseLeftButtonDown" />
-
-                        <!-- Buttons -->
 
                         <Button Grid.Row="5" x:Name="EditButton" Content="Save Link" Width="100" Height="20" Click="EditButton_Click" Visibility="Hidden" HorizontalAlignment="Left" Margin="10" Style="{StaticResource ButtonStyle}"/>
                         <Button Grid.Row="5"  x:Name="UploadPicture" Click="UploadPicture_Click" Margin="0,0,60,0" Width="100" Visibility="Hidden" Content="Upload Picture" Height="20" Style="{StaticResource ButtonStyle}"/>
@@ -145,8 +140,6 @@
             <Image x:Name="MapImage" Source="/Media/Maps/MirageMap.png" Grid.Column="1"/>
             <Canvas x:Name="ItemCanvas" Grid.Column="1" Background="Transparent" PreviewMouseMove="ItemCanvas_PreviewMouseMove" PreviewMouseUp="ItemCanvas_PreviewMouseUp" Width="1024" Height="1024"/>
             <InkCanvas x:Name="DrawingCanvas" Grid.Column="1" Background="Transparent"/>
-
-            <!--<Canvas x:Name="ItemCanvas" Grid.Column="1" Background="Transparent" PreviewMouseMove="ItemCanvas_PreviewMouseMove" PreviewMouseUp="ItemCanvas_PreviewMouseUp" Width="1024" Height="1024"/>-->
 
             <StackPanel Grid.Column="2">
                 <Grid>

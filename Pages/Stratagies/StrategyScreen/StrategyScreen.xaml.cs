@@ -60,6 +60,7 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
             }
         }
 
+        #region Events
         private void EraserBtn_Click(object sender, RoutedEventArgs e)
         {
             SetEditingMode(EditingMode.Eraser);
@@ -121,12 +122,13 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
             });
             e.Handled = true;
         }
+
         private void SelectedImage_MouseEnter(object sender, MouseEventArgs e)
         {
             if (sender is Image image && ImagePopup != null)
             {
                 PopupImage.Source = image.Source;
-                ImagePopup.IsOpen = true;         
+                ImagePopup.IsOpen = true;
             }
         }
 
@@ -153,6 +155,82 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
             SelectedImage.Source = ViewModel.ByteArrayToImage(ViewModel.SelectedItem.MediaImage);
         }
 
+        private void Save_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ViewModel.SaveStrategy(DrawingCanvas, false);
+        }
+
+        private void ItemDescription_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (ViewModel.SelectedItem != null)
+            {
+                ViewModel.SelectedItem.Description = ItemDescription.Text;
+            }
+
+            ViewModel.Source.StrategyItems[GetIndexOfStrategyItem()] = ViewModel.SelectedItem;
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            int index = GetIndexOfStrategyItem();
+            ViewModel.DeletedItems.Add(ViewModel.Source.StrategyItems[index]);
+            for (int i = 0; i < ItemCanvas.Children.Count; i++)
+            {
+                var child = ItemCanvas.Children[i];
+                if (child is Image image && Equals((image.Tag as StrategyItem), ViewModel.Source.StrategyItems[index]))
+                {
+                    ItemCanvas.Children.RemoveAt(i);
+                    break;
+                }
+            }
+            ViewModel.Source.StrategyItems.RemoveAt(index);
+            ViewModel.SelectedItem = null;
+            ItemDescription.Visibility = Visibility.Hidden;
+            ItemDescriptionLabel.Visibility = Visibility.Hidden;
+            NoneSelected.Visibility = Visibility.Visible;
+            DeleteButton.Visibility = Visibility.Hidden;
+            ItemLinkEditor.Visibility = Visibility.Hidden;
+            HyperLinkText.Visibility = Visibility.Hidden;
+            EditButton.Visibility = Visibility.Hidden;
+            ItemLinkLabel.Visibility = Visibility.Hidden;
+            UploadPicture.Visibility = Visibility.Hidden;
+            SelectedImage.Visibility = Visibility.Hidden;
+        }
+
+        private void CheckInOutButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ViewModel.Source.IsCheckedOut)
+            {
+                MessageBoxResult result = MessageBox.Show(
+                "Would you like to save any unsaved changes when you check in?",
+                "Warning",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question
+                );
+
+                ViewModel.Source.IsCheckedOut = false;
+                CheckInOutButton.Content = "Check Out";
+                if (result == MessageBoxResult.Yes)
+                {
+                    ViewModel.SaveStrategy(DrawingCanvas, true);
+                }
+                else
+                {
+                    ViewModel.UpdateCheckedOut();
+                }
+                Save.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                ViewModel.Source.IsCheckedOut = true;
+                ViewModel.UpdateCheckedOut();
+                CheckInOutButton.Content = "Check In";
+                Save.Visibility = Visibility.Visible;
+            }
+        }
+        #endregion
+
+        #region Drawing Logic
         private void SetEditingMode(EditingMode mode)
         {
             PenBtn.IsChecked = false;
@@ -202,7 +280,9 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
         {
             Pen, Eraser
         }
+        #endregion
 
+        #region Item Dragging Logic
         private void ItemCanvas_PreviewMouseMove(object sender, MouseEventArgs e)
         {
             if (this.dragObject == null)
@@ -295,7 +375,9 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
                 }
             }
         }
+        #endregion
 
+        #region Helper Methods
         private void SetOnscreenItems ()
         {
             ItemCanvas.IsHitTestVisible = true;
@@ -446,80 +528,6 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
             ItemDescription.Text = item.Description;
         }
 
-        private void Save_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            ViewModel.SaveStrategy(DrawingCanvas, false);
-        }
-
-        private void ItemDescription_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (ViewModel.SelectedItem != null) 
-            {
-                ViewModel.SelectedItem.Description = ItemDescription.Text;
-            }
-
-            ViewModel.Source.StrategyItems[GetIndexOfStrategyItem()] = ViewModel.SelectedItem;
-        }
-
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        {
-            int index = GetIndexOfStrategyItem();
-            ViewModel.DeletedItems.Add(ViewModel.Source.StrategyItems[index]);
-            for (int i = 0; i < ItemCanvas.Children.Count; i++)
-            {
-                var child = ItemCanvas.Children[i];
-                if (child is Image image && Equals((image.Tag as StrategyItem), ViewModel.Source.StrategyItems[index]))
-                {
-                    ItemCanvas.Children.RemoveAt(i);
-                    break;
-                }
-            }
-            ViewModel.Source.StrategyItems.RemoveAt(index);
-            ViewModel.SelectedItem = null;
-            ItemDescription.Visibility = Visibility.Hidden;
-            ItemDescriptionLabel.Visibility = Visibility.Hidden;
-            NoneSelected.Visibility = Visibility.Visible;
-            DeleteButton.Visibility = Visibility.Hidden;
-            ItemLinkEditor.Visibility = Visibility.Hidden;
-            HyperLinkText.Visibility = Visibility.Hidden;
-            EditButton.Visibility = Visibility.Hidden;
-            ItemLinkLabel.Visibility = Visibility.Hidden;
-            UploadPicture.Visibility = Visibility.Hidden;
-            SelectedImage.Visibility = Visibility.Hidden;
-        }
-
-        private void CheckInOutButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (ViewModel.Source.IsCheckedOut)
-            {
-                MessageBoxResult result = MessageBox.Show(
-                "Would you like to save any unsaved changes when you check in?", 
-                "Warning",            
-                MessageBoxButton.YesNo,   
-                MessageBoxImage.Question  
-                );
-
-                ViewModel.Source.IsCheckedOut = false;
-                CheckInOutButton.Content = "Check Out";
-                if (result == MessageBoxResult.Yes)
-                {
-                    ViewModel.SaveStrategy(DrawingCanvas, true);
-                }
-                else
-                {
-                    ViewModel.UpdateCheckedOut();
-                }
-                Save.Visibility = Visibility.Hidden;
-            } 
-            else
-            {
-                ViewModel.Source.IsCheckedOut = true;
-                ViewModel.UpdateCheckedOut();
-                CheckInOutButton.Content = "Check In";
-                Save.Visibility = Visibility.Visible;
-            }
-        }
-
         private void SetStrategy()
         {
             var app = (App)Application.Current;
@@ -600,5 +608,6 @@ namespace StrategySync.Pages.Stratagies.StrategyScreen
             else
                 Console.WriteLine("Passed");
         }
+        #endregion
     }
 }

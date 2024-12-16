@@ -15,7 +15,7 @@ namespace StrategySync.Classes.Converters
             {
                 return uri;
             }
-            return null; // Or handle as needed, e.g., return a default Uri
+            return null;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
